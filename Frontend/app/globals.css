@@ -83,6 +83,11 @@ body {
   to   { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes fade-out {
+  from { opacity: 1; }
+  to   { opacity: 0; pointer-events: none; }
+}
+
 @keyframes orb-drift {
   0%, 100% { transform: translate(0, 0) scale(1); }
   25%       { transform: translate(30px, -20px) scale(1.05); }
