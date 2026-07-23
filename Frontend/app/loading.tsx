@@ -7,7 +7,7 @@ export default function Loading() {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    const t = setTimeout(() => setVisible(false), 1200);
+    const t = setTimeout(() => setVisible(false), 1500);
     return () => clearTimeout(t);
   }, []);
 
@@ -25,8 +25,8 @@ export default function Loading() {
         minHeight: '100vh',
         gap: '20px',
         backgroundColor: 'var(--bg)',
-        /* fade out smoothly once the 1.2 s elapses */
-        animation: 'fade-out 0.25s ease 1.2s both',
+        /* fade out smoothly once the 1.5 s elapses */
+        animation: 'fade-out 0.25s ease 1.5s both',
       }}
     >
       {/* Track ring */}
@@ -39,7 +39,7 @@ export default function Loading() {
             border: '2.5px solid var(--border-2)',
           }}
         />
-        {/* Spinning amber arc — 1.2 s cycle */}
+        {/* Spinning amber arc — 1.5 s cycle */}
         <div
           style={{
             position: 'absolute',
