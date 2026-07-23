@@ -12,3 +12,25 @@
 .roo
 .trae
 .windsurf
+
+# dependencies
+node_modules/
+
+# environment
+.env
+.env.*
+*.local
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# build output
+dist/
+build/
+coverage/
+
+# local databases
+*.sqlite
+*.db
