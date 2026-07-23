@@ -1,1294 +1,900 @@
 
-============================================================
-HIGHEST PRIORITY — HUMAN DESIGN DECISION SYSTEM
-================================================
+# GLOBAL FRONTEND UI RULE — NATURAL, HUMAN-WRITTEN CSS
 
-This section has HIGHER PRIORITY than all other visual styling instructions.
+This instruction applies to ALL frontend work in this project.
 
-These rules apply globally to EVERY DesignMyPlot page:
+The goal is NOT to generate a "beautiful modern UI".
 
-- landing pages
-- authentication
-- onboarding
-- dashboards
-- plot/project pages
-- forms
-- editor/workspace
-- profile
-- settings
-- modals
-- dialogs
-- empty states
-- loading states
-- error states
-- future pages and components
+The goal is to build a clean, normal, well-structured interface that feels
+like a frontend developer manually designed and coded it.
 
-The goal is NOT simply to create a "modern UI."
-
-The goal is to create an interface that feels deliberately designed by
-an experienced human product designer.
-
-Design decisions must come from:
-
-PRODUCT PURPOSE
-→ USER TASK
-→ INFORMATION HIERARCHY
-→ COMPOSITION
-→ SPACING
-→ TYPOGRAPHY
-→ INTERACTION
-→ VISUAL STYLING
-→ DECORATION
-
-NEVER reverse this process.
-
-Do not begin with gradients, cards, shadows, icons, hero patterns,
-dashboard templates, or decorative components and then fit content into them.
+Do not use the visual habits commonly produced by AI website generators.
 
 ============================================================
+CORE RULE
+=========
 
-1. NEVER DESIGN FROM A TEMPLATE FIRST
-   ============================================================
+STOP trying to make the interface look impressive.
 
-Do NOT choose a familiar SaaS layout and insert DesignMyPlot content into it.
+Do not "enhance" the UI.
 
-Do not think:
+Do not "modernize" it using decorative CSS.
 
-"This is a landing page, therefore it needs a centered hero."
+Do not generate a Dribbble-style, startup-style, SaaS-style, AI-generated,
+or portfolio-showcase interface.
 
-"This is a dashboard, therefore it needs four statistic cards."
+Write CSS like a careful frontend developer solving ordinary layout,
+readability, spacing, responsiveness, and usability problems.
 
-"This is a settings page, therefore everything belongs inside cards."
+Use ordinary CSS fundamentals:
 
-"This is onboarding, therefore it needs a giant illustration."
-
-"This is an editor, therefore it needs a generic sidebar."
-
-Instead determine what the USER needs to accomplish first.
-
-The page structure must emerge from the task.
-
-============================================================
-2. PAGE PURPOSE MUST CONTROL THE LAYOUT
-=======================================
-
-Before writing JSX, HTML, CSS, Tailwind, or components for ANY page,
-internally answer:
-
-1. What is this page for?
-2. What is the user's main goal?
-3. What should the user notice first?
-4. What should they notice second?
-5. What is the primary action?
-6. What information supports that action?
-7. What information is secondary?
-8. What can be removed?
-9. What DesignMyPlot-specific content can visually support the page?
-10. What should the page become on smaller screens?
-
-Only after answering these questions should the layout be selected.
-
-============================================================
-3. DO NOT CREATE "AI WEBSITE COMPOSITION"
-=========================================
-
-NEVER automatically create this:
-
-Navbar
-
-[huge empty area]
-
-Centered giant heading
-
-Centered subtitle
-
-[CTA]
-
-[huge empty area]
-
-Footer
-
-This composition is explicitly undesirable.
-
-Also do NOT automatically create:
-
-Badge
-
-Gradient headline
-
-Subtitle
-
-[Primary CTA] [Secondary CTA]
-
-Four statistics
-
-Three feature cards
-
-Testimonials
-
-CTA banner
-
-Footer
-
-These are reusable template patterns, not evidence of thoughtful design.
-
-Any of these elements may be used individually when justified.
-
-They must NEVER appear merely because they are common on modern websites.
-
-============================================================
-4. DO NOT CONFUSE MINIMALISM WITH EMPTINESS
-===========================================
-
-Minimalism means removing unnecessary elements.
-
-It does NOT mean placing three elements in the middle of a giant viewport.
-
-Whitespace must organize content.
-
-Whitespace must NOT become the main content.
-
-BAD:
-
----
-
-    Heading
-
-    Paragraph
-
-    Button
-
----
-
-GOOD:
-
-Content has intentional relationships, hierarchy, supporting context,
-and visual balance.
-
-A page may be simple without feeling unfinished.
-
-============================================================
-5. NEVER USE VIEWPORT HEIGHT TO FAKE COMPOSITION
-================================================
-
-Do NOT automatically use:
-
-height: 100vh
-min-height: 100vh
-h-screen
-min-h-screen
-
-or large flex-grow areas merely to vertically center a small amount of content.
-
-Do not stretch hero sections simply because the browser viewport is tall.
-
-Section height should come primarily from:
-
-CONTENT
-+
-INTENTIONAL PADDING
-
-rather than:
-
-AVAILABLE SCREEN HEIGHT.
-
-Marketing hero sections should generally use deliberate padding rather
-than forcing themselves to fill the entire screen.
-
-Example direction:
-
-padding-top: 80-120px
-padding-bottom: 72-120px
-
-These are guidelines, not mandatory values.
-
-============================================================
-6. THE FIRST VIEWPORT MUST FEEL COMPOSED
-========================================
-
-The first screen should feel intentionally designed.
-
-It should NOT look like content floating in unused browser space.
-
-Ask:
-
-What balances the main message?
-
-What demonstrates the product?
-
-What gives the composition visual weight?
-
-What useful context belongs near the primary action?
-
-Where should the user's eye move after the primary content?
-
-The answer should preferably come from the PRODUCT itself.
-
-============================================================
-7. PRODUCT MEANING BEFORE DECORATION
-====================================
-
-DesignMyPlot is about:
-
-LAND
-SPACE
-DIMENSIONS
-LAYOUT
-PLANNING
-PROPERTY
-DESIGN
-VISUALIZATION
-
-Use these concepts to create visual identity.
-
-When useful, show things such as:
-
-- plot boundaries
-- dimension labels
-- simple site plans
-- property layouts
-- building footprints
-- roads
-- paths
-- gardens
-- trees
-- zones
-- measurement indicators
-- editor previews
-- actual product screenshots
-- planning canvas previews
-
-These are stronger visual elements than random decoration.
-
-Do NOT invent product capabilities that do not exist.
-
-============================================================
-8. WHEN A PAGE FEELS EMPTY, DO NOT DECORATE IT
-==============================================
-
-If a page feels empty, DO NOT immediately add:
-
-- gradient blobs
-- illustrations
-- random cards
-- icons
-- fake statistics
-- badges
-- abstract shapes
-- shadows
-- glowing elements
-- background patterns
-
-First ask whether the page needs:
-
-- better composition
-- stronger hierarchy
-- useful supporting information
-- actual product context
-- a product preview
-- a secondary action
-- improved proportions
-- a better content structure
-- part of the next section
-
-Solve STRUCTURAL problems structurally.
-
-============================================================
-9. NOT EVERYTHING SHOULD BE CENTERED
-====================================
-
-Center alignment must be intentional.
-
-Do NOT automatically center:
-
-headings
-paragraphs
-buttons
-forms
-cards
-sections
-navigation
-empty states
-
-For many pages, left alignment produces stronger hierarchy and
-better scanning.
-
-Use centered layouts where they genuinely improve the composition.
-
-Use asymmetric layouts when appropriate.
-
-============================================================
-10. USE ASYMMETRY INTENTIONALLY
-===============================
-
-Human-designed interfaces often balance unequal elements.
-
-For example:
-
----
-
-Headline / copy                Product visualization
-
-Supporting information        Plot preview
-
-Primary action
-
----
-
-or:
-
----
-
-Page title                                Primary action
-
-Supporting description
-
----
-
-or:
-
----
-
-Navigation / tools     Main workspace       Properties
-
----
-
-Do not force equal columns.
-
-Do not make everything perfectly symmetrical simply because CSS Grid
-makes it easy.
-
-============================================================
-11. DO NOT FORCE THREE-COLUMN AND FOUR-CARD GRIDS
-=================================================
-
-Avoid automatically generating:
-
-3 feature cards
-4 statistic cards
-3 pricing cards
-4 dashboard cards
-
-because these are extremely common generated UI patterns.
-
-The number and size of elements should come from actual information.
-
-If there are two meaningful concepts, show two.
-
-If there are five, design for five.
-
-Do not invent content to make a grid visually complete.
-
-============================================================
-12. CARDS ARE NOT A LAYOUT SYSTEM
-=================================
-
-Do not put everything inside a card.
-
-Before creating a card ask:
-
-"Does this information actually represent a grouped object?"
-
-If not, it may only need:
-
-spacing
-alignment
-divider
-typography
-background separation
-
-rather than another rounded rectangle.
-
-Avoid:
-
-card
-  └ card
-      └ card
-
-unless the hierarchy genuinely requires it.
-
-Professional interfaces often use fewer containers than generated ones.
-
-============================================================
-13. CREATE VISUAL RHYTHM
-========================
-
-Spacing should communicate relationships.
-
-Elements belonging together should sit closer together.
-
-Different concepts should have stronger separation.
-
-Example direction:
-
-Heading → supporting copy:
-16-24px
-
-Supporting copy → actions:
-24-32px
-
-Related controls:
-8-16px
-
-Section heading → section content:
-24-40px
-
-Major section → major section:
-64-112px
-
-These are guidelines.
-
-Do not mechanically use identical gaps between everything.
-
-The page should have rhythm:
-
-strong element
-↓
-supporting element
-↓
-interaction
-↓
-breathing room
-↓
-new concept
-
-============================================================
-14. DO NOT CREATE HUGE UNUSED AREAS
-===================================
-
-If more than roughly half of a normal desktop viewport contains no
-meaningful visual or functional content, inspect the composition again.
-
-This does NOT mean every area must be filled.
-
-It means large empty areas must have a reason.
-
-Do NOT solve empty layouts by increasing:
-
-font size
-section height
-button size
+display
+flex
+grid
+gap
 padding
+margin
+width
+max-width
+min-width
+font-size
+font-weight
+line-height
+border
+border-radius
+background
+color
+position
 
-Instead improve the composition.
-
-============================================================
-15. TYPOGRAPHY MUST CREATE HIERARCHY
-====================================
-
-Do not rely primarily on cards, colors, or backgrounds to establish hierarchy.
-
-Typography should do much of the work.
-
-Use clear differences between:
-
-page title
-section heading
-component title
-body copy
-supporting copy
-labels
-metadata
-
-Avoid making everything:
-
-large
-bold
-dark
-
-Secondary information should visually behave like secondary information.
-
-Do not create giant headings merely because the page has little content.
+Use advanced/decorative CSS only when there is an actual functional reason.
 
 ============================================================
-16. CONTENT WIDTH MATTERS
-=========================
-
-Do not stretch readable text across very wide screens.
-
-Use sensible max-width values.
-
-Body copy should usually remain comfortably readable.
-
-At the same time, do not constrain entire application pages to tiny
-centered columns if the task benefits from horizontal space.
-
-Marketing content:
-controlled width.
-
-Forms:
-comfortable narrow-to-medium width.
-
-Dashboards:
-moderate-to-wide.
-
-Editor:
-use available workspace intelligently.
-
-Page purpose determines width.
-
-============================================================
-17. LANDING PAGE ≠ CENTERED HERO TEMPLATE
-==========================================
-
-A DesignMyPlot landing page should communicate what the PRODUCT does.
-
-Do not make:
-
-Navbar
-Hero
-Footer
-
-the entire landing page.
-
-A stronger direction may be:
-
-Navigation
-
-↓
-
-Headline / value proposition        Plot/product visualization
-
-Supporting copy                     Actual visual context
-
-Primary CTA
-Secondary action
-
-↓
-
-Next meaningful product section
-
-↓
-
-Additional product explanation
-
-↓
-
-Footer
-
-The exact layout can differ.
-
-Do NOT mechanically reproduce this structure either.
-
-Use it as evidence of how product content can create composition.
-
-============================================================
-18. THE NEXT SECTION MAY APPEAR ABOVE THE FOLD
-==============================================
-
-Do NOT try to perfectly fit the hero into one viewport.
-
-It is completely acceptable for the beginning of the next section to
-be visible at the bottom of the screen.
-
-This often improves continuity and encourages scrolling.
-
-Do not stretch a hero simply to push everything else below the viewport.
-
-============================================================
-19. FOOTER IS NOT A SPACER
-==========================
-
-The footer belongs after meaningful page content.
-
-Never use the footer to fill unused viewport height.
-
-On normal marketing pages, the footer generally should NOT appear
-immediately after a tiny hero.
-
-If the footer is visible in the first desktop viewport because the page
-contains almost no content, reconsider whether the page is actually complete.
-
-============================================================
-20. APPLICATION PAGES ARE NOT MARKETING PAGES
-=============================================
-
-Internal product pages should prioritize tasks over presentation.
-
-Do NOT place marketing-style:
-
-hero headings
-taglines
-large illustrations
-gradient text
-feature cards
-
-inside normal working screens unless genuinely necessary.
-
-Application pages should feel efficient and purposeful.
-
-============================================================
-21. DASHBOARDS MUST REPRESENT REAL INFORMATION
-==============================================
-
-Do not automatically create:
-
-"Welcome back!"
-
-four KPI cards
-
-recent activity
-
-quick actions
-
-chart
-
-because this is the default generated dashboard pattern.
-
-Only show information the user genuinely benefits from.
-
-For DesignMyPlot, useful dashboard information might include actual:
-
-plots
-projects
-recent designs
-saved work
-templates
-status
-last modified information
-
-Do not invent analytics merely to make the dashboard look populated.
-
-============================================================
-22. FORMS SHOULD LOOK LIKE FORMS
+DO NOT DESIGN FROM VISUAL TRENDS
 ================================
 
-Do not turn simple forms into elaborate landing pages.
+Never begin by asking:
 
-A good form needs:
+"How can I make this look modern?"
 
-clear title
-short context if necessary
-logical field grouping
-visible labels
-useful validation
-clear primary action
-clear secondary/cancel action
+Instead ask:
 
-It does NOT automatically need:
+"What is the simplest layout that makes this content easy to use?"
 
-illustration
-gradient background
-giant card
-progress indicator
-feature explanation
+Do not automatically use patterns associated with generated websites.
 
-unless the task requires them.
+Specifically avoid automatically creating:
+
+- giant hero sections
+- split-screen hero layouts
+- oversized headlines
+- highlighted words inside headlines
+- gradient text
+- gradients
+- glows
+- blurred background shapes
+- glassmorphism
+- floating cards
+- decorative mockups
+- fake browser windows
+- excessive rounded rectangles
+- pill labels above headings
+- eyebrow labels
+- excessive badges
+- large CTA blocks
+- feature-card grids
+- statistic blocks
+- decorative illustrations
+- abstract graphics
+- fancy dividers
+- oversized empty space
+- unnecessary animations
+- decorative grid backgrounds
+- dark "premium" themes
+- random accent colors
+- excessive shadows
+
+Do not use these unless the existing product genuinely requires one.
 
 ============================================================
-23. AUTHENTICATION SHOULD REMAIN SIMPLE
-=======================================
+NO AUTOMATIC HERO DESIGN
+========================
 
-Login and signup pages should feel trustworthy and focused.
+A landing page does NOT automatically require a "hero".
 
 Do not automatically create:
 
-50/50 split screen
-giant marketing illustration
-testimonial
-gradient panel
-random product quote
+small uppercase label
 
-A simple, carefully composed authentication screen is often stronger.
+BIG HEADLINE WITH
+COLORED WORDS
 
-Use branding subtly.
+marketing paragraph
 
-============================================================
-24. THE PLOT EDITOR IS A PROFESSIONAL TOOL
-==========================================
+[Large CTA →]
 
-The DesignMyPlot editor must NOT look like a SaaS marketing dashboard.
+    decorative product mockup
 
-The actual plot/design is the primary visual object.
+This pattern is specifically unwanted.
 
-Prioritize:
+If the page only needs:
 
-canvas space
-tool discoverability
-clear controls
-properties
-layers
-measurements
-selection state
-undo/redo
-save state
+heading
+description
+button
+product information
 
-Keep controls compact.
+then arrange those things normally.
 
-Avoid giant cards.
-
-Avoid excessive rounded containers.
-
-Avoid decorative backgrounds.
-
-The editor should feel closer to professional planning/design software
-than a generic admin dashboard.
+Do not transform ordinary content into a marketing composition.
 
 ============================================================
-25. NAVIGATION SHOULD NOT DOMINATE
-==================================
+DO NOT STYLE TEXT FOR DRAMA
+===========================
 
-Navigation should be clear but visually restrained.
+Headings should communicate hierarchy, not create visual spectacle.
 
-Do not make the header unnecessarily tall.
+Do not automatically:
 
-Do not put every navigation item inside pills.
+- make headings 60px+
+- split headings across multiple lines
+- color individual words
+- use gradient text
+- use extremely heavy font weights
+- use huge differences between heading and body text
+- use uppercase letter-spaced labels above headings
 
-Do not add excessive icons.
+Use ordinary typography.
 
-Use subtle active states.
+Typical starting direction:
 
-Navigation should help the user move through the product without
-competing with page content.
+body:
+16px
 
-============================================================
-26. BUTTONS MUST REPRESENT ACTION HIERARCHY
-===========================================
+small text:
+13-14px
 
-Every screen should normally have a clear primary action.
+normal page heading:
+32-40px
 
-Do not make five buttons equally prominent.
+section heading:
+22-28px
 
-Use:
+component heading:
+16-20px
 
-PRIMARY
-for the most important action.
+These are guidelines, not requirements.
 
-SECONDARY
-for supporting actions.
-
-TERTIARY / GHOST
-for low-priority actions.
-
-DESTRUCTIVE
-only for destructive behavior.
-
-Do not turn every link into a button.
-
-Do not turn every button into a large colored pill.
+If 36px works, do not use 64px.
 
 ============================================================
-27. ICONS MUST HAVE A REASON
-============================
+USE NORMAL COLORS
+=================
 
-Do not add icons merely to make UI elements look designed.
+Use a simple product palette.
 
-Icons should:
+For DesignMyPlot:
 
-improve recognition
-reduce scanning time
-communicate functionality
+background:
+light neutral / warm white
 
-Do not put every icon inside:
+text:
+near-black
 
-rounded square
-colored circle
-gradient container
+secondary text:
+gray
 
-Plain icons are often better.
+brand:
+earthy orange
 
-============================================================
-28. SHADOWS MUST REPRESENT ELEVATION
-====================================
+border:
+light neutral gray
 
-Use shadows only when an element actually needs visual elevation.
+That is enough for most pages.
 
-Examples:
+Do NOT create multiple shades simply to make the interface look sophisticated.
 
-dropdown
-modal
-floating toolbar
-popover
+Do not automatically create a dark theme.
 
-Normal content sections do not need dramatic shadows.
+Do not use orange everywhere just because it is the brand color.
 
-Prefer subtle borders for structural separation.
-
-============================================================
-29. COLOR MUST COMMUNICATE
-==========================
-
-DesignMyPlot's warm earthy orange/terracotta is an accent.
-
-Use it for:
+Brand color should primarily identify:
 
 primary actions
 selected states
-important highlights
-small brand details
+links where appropriate
+small important details
 
-Do not make every heading orange.
-
-Do not make every icon orange.
-
-Do not make every border orange.
-
-Do not create an orange-heavy interface merely to establish branding.
-
-Brand identity comes from the entire design system, not one repeated color.
+Most of the interface should remain neutral.
 
 ============================================================
-30. BACKGROUND EFFECTS ARE OPTIONAL
-===================================
+USE NORMAL BACKGROUNDS
+======================
 
-Gradients, glows, textures, and atmospheric effects are NOT required.
+Prefer:
 
-Use them only if they genuinely improve a marketing composition.
+background: #fff;
 
-Application screens should usually use little or none.
+or a subtle warm neutral.
 
-Never use decoration to compensate for weak layout.
+Do not automatically use:
+
+linear-gradient(...)
+radial-gradient(...)
+background-image
+blurred pseudo-elements
+pattern overlays
+grid backgrounds
+noise textures
+
+A plain background is completely acceptable.
+
+Do not decorate empty space.
 
 ============================================================
-31. MOTION MUST COMMUNICATE STATE
-=================================
+USE BORDERS BEFORE SHADOWS
+==========================
 
-Animations should explain interaction.
+For separation, first consider:
 
-Good:
+spacing
 
-menu opening
-modal appearing
-button state changing
-selection transition
-panel expanding
-drag interaction
+then:
+
+1px border
+
+then, only if elevation is actually required:
+
+a subtle shadow.
+
+Do not automatically add box-shadow to:
+
+buttons
+cards
+inputs
+navigation
+sections
+images
+
+A normal border is often enough.
+
+============================================================
+KEEP BORDER RADIUS RESTRAINED
+=============================
+
+Do not round everything.
+
+Suggested general direction:
+
+inputs:
+4-8px
+
+buttons:
+4-8px
+
+cards/panels:
+6-10px
+
+Some elements can have no radius.
+
+Avoid automatically using:
+
+12px
+16px
+20px
+24px
+9999px
+
+everywhere.
+
+Pills should only be used when the component is actually pill-like.
+
+============================================================
+BUTTONS SHOULD LOOK LIKE BUTTONS
+================================
+
+A normal primary button can simply be:
+
+brand background
+white text
+normal padding
+small border radius
+
+Do not automatically add:
+
+shadow
+glow
+gradient
+large arrow icon
+scale animation
+oversized padding
+
+Hover can simply change the background slightly.
+
+Do not make buttons visually dramatic.
+
+============================================================
+DO NOT TURN CONTENT INTO CARDS
+==============================
+
+Content does not need a rectangle around it merely because it is grouped.
+
+Prefer:
+
+heading
+text
+spacing
+divider
+
+before:
+
+card
+
+Use a card only when the boundary helps the user understand the interface.
+
+If cards are necessary, keep them simple:
+
+plain background
+1px border
+small radius
+normal padding
+
+No floating effect unless functionally appropriate.
+
+============================================================
+SPACING SHOULD FEEL MANUAL
+==========================
+
+Do not create enormous whitespace to make the page look premium.
+
+Use practical spacing.
+
+For example:
+
+8px   small relationship
+12px
+16px  common spacing
+24px  component separation
+32px  larger separation
+48px  section separation
+64px  major separation
+
+Use larger values only when the composition genuinely needs them.
+
+Do not vertically center small content inside the entire browser window.
+
+Do not use min-height: 100vh merely for appearance.
+
+============================================================
+CONTAINERS SHOULD BE PRACTICAL
+==============================
+
+Use a straightforward content container.
+
+For example:
+
+max-width around 1100-1200px
+margin: 0 auto
+normal horizontal padding
+
+Do not artificially make content extremely narrow.
+
+Do not create excessive nested containers.
 
 Avoid:
 
-floating cards
-constant pulsing
-random entrance animations
-bouncing icons
-continuous background movement
+container
+  wrapper
+    inner
+      content-wrapper
+        card
 
-Motion should not demand attention without reason.
-
-============================================================
-32. RESPONSIVE DESIGN REQUIRES RECOMPOSITION
-============================================
-
-Do not simply shrink desktop layouts.
-
-For mobile, reconsider:
-
-priority
-ordering
-navigation
-controls
-spacing
-content density
-
-A desktop two-column hero may become:
-
-headline
-copy
-actions
-product preview
-
-on mobile.
-
-An editor may move secondary properties into drawers.
-
-A dashboard grid may become a list.
-
-Responsive design is structural, not just smaller font sizes.
+when one or two elements would work.
 
 ============================================================
-33. DESIGN EMPTY STATES AS PRODUCT MOMENTS
-==========================================
+LAYOUT SHOULD COME FROM CONTENT
+===============================
 
-An empty state should explain:
+Use flexbox when arranging things in one direction.
 
-what is empty
-why that matters
-what the user can do next
+Use grid when the content genuinely forms a grid.
+
+Do not use Grid simply to create a visually impressive composition.
+
+Do not create asymmetry just because it looks editorial.
+
+Do not create symmetry just because it looks clean.
+
+Follow the content.
+
+============================================================
+LANDING PAGE RULE
+=================
+
+For the DesignMyPlot landing page:
+
+Keep it straightforward.
+
+A reasonable structure is:
+
+Header
+
+Main introduction
+
+Useful explanation of what DesignMyPlot does
+
+Primary action
+
+Actual product information / preview if one exists
+
+Features or workflow
+
+Footer
+
+Do NOT force all of this into one screen.
+
+Do NOT create a giant marketing hero.
+
+Do NOT create a fake drawing/editor preview purely for decoration.
+
+If an actual application screenshot or real product component exists,
+it may be shown.
+
+Do not invent one merely to make the landing page look richer.
+
+============================================================
+APPLICATION PAGE RULE
+=====================
+
+Application pages should look like application pages.
+
+Use straightforward structures such as:
+
+Page title                         Primary action
+
+Description
+
+---
+
+Actual content
+
+For example:
+
+My Plots                         [Create plot]
+
+View and manage your saved plots.
+
+---
+
+Search...                       Sort by ▾
+
+Plot name       Size       Modified       Status
+Home Plot       40×60      Today          Draft
+Farm            2 acres    Yesterday      Saved
+
+This is preferable to turning every plot into a large decorative card.
+
+============================================================
+FORM RULE
+=========
+
+Forms should be ordinary, readable forms.
 
 Example:
 
-No plots yet.
+Create plot
 
-Create your first plot to start planning your space.
+Enter the dimensions of your land.
 
-[Create plot]
+Plot name
+[____________________________]
 
-Do not automatically add giant illustrations or decorative graphics.
+Width
+[____________]
 
-============================================================
-34. LOADING STATES SHOULD PRESERVE STRUCTURE
-============================================
+Length
+[____________]
 
-Loading should not cause major layout jumping.
+Unit
+[Feet ▾]
 
-Use:
+[Cancel]   [Create plot]
 
-small progress indicators
-skeletons when useful
-disabled states
-clear loading labels
+Do NOT put this inside a giant floating card unless necessary.
 
-Do not cover the entire application with a giant spinner unless the
-entire application genuinely cannot function yet.
+Do NOT add an illustration merely to balance the screen.
 
-============================================================
-35. COPY SHOULD SOUND HUMAN
-===========================
+Do NOT add motivational copy.
 
-Avoid generic AI-generated marketing copy:
-
-"Unlock the power of..."
-"Revolutionize your workflow..."
-"Transform your experience..."
-"Elevate your journey..."
-"Supercharge your..."
-"Seamlessly empower..."
-
-Prefer direct product language.
-
-Examples:
-
-Create a plot
-Add a building
-Set dimensions
-Save design
-Open project
-Upload plan
-Start designing
-
-Write like a real product, not an advertisement generator.
+Do NOT add icons to every field.
 
 ============================================================
-36. DO NOT INVENT CONTENT FOR VISUAL BALANCE
-============================================
+EDITOR RULE
+===========
 
-Never invent:
+The plot editor is a tool.
 
-user counts
-ratings
-customer logos
-testimonials
+Optimize it for work.
+
+Example:
+
+---
+
+Back     Plot name                     Save        Export
+---------------------------------------------------------
+
+Tools       |
+            |
+Select      |
+Boundary    |            CANVAS
+Building    |
+Road        |
+Tree        |
+            |
+-------------
+
+Keep toolbars compact.
+
+Use plain controls.
+
+Do not make tool buttons large decorative cards.
+
+Do not make the editor look like a marketing page.
+
+============================================================
+NAVIGATION RULE
+===============
+
+Use a normal navigation bar.
+
+Logo
+navigation links
+account/action
+
+Normal height.
+Normal spacing.
+Simple active state.
+Subtle bottom border if useful.
+
+Do not make navigation float.
+
+Do not put the navbar inside a rounded container.
+
+Do not use glass effects.
+
+Do not add decorative shadows without reason.
+
+============================================================
+ICONS
+=====
+
+Icons are optional.
+
+Text is often enough.
+
+Use icons when they make controls easier to recognize.
+
+Do not add icons to:
+
+every heading
+every button
+every input
+every feature
+every navigation item
+
+Do not place every icon inside a colored circle or square.
+
+============================================================
+ANIMATION
+=========
+
+Do not add animation unless interaction benefits from it.
+
+Normal hover/focus transitions are enough.
+
+Approximately 100-200ms is generally sufficient.
+
+Do not add:
+
+floating
+bouncing
+pulsing
+scroll reveal
+fade-up-on-everything
+parallax
+animated gradients
+
+unless explicitly requested.
+
+============================================================
+DO NOT INVENT UI
+================
+
+Never invent content or interface elements just to improve appearance.
+
+Do not invent:
+
 statistics
-performance metrics
-activity
-notifications
-projects
-reviews
+testimonials
+customer logos
+fake projects
+fake notifications
+fake maps
+fake editor screenshots
+fake activity
+fake charts
+fake analytics
+fake features
 
-simply because the page looks empty.
+Use actual product information.
 
-Visual balance must come from design, not fake information.
+If there is little content, a simple page is acceptable.
 
 ============================================================
-37. REUSE THE DESIGN SYSTEM
+HUMAN CSS PRINCIPLE
+===================
+
+CSS should appear to have been written because a developer encountered
+a specific layout problem and solved it.
+
+GOOD reasoning:
+
+"The content needs a maximum width."
+
+"The button needs enough padding to be clickable."
+
+"These two controls belong together, so use an 8px gap."
+
+"This section is separate, so give it more top margin."
+
+"The border distinguishes the toolbar from the canvas."
+
+"The text is secondary, so reduce its contrast."
+
+BAD reasoning:
+
+"This needs more visual interest."
+
+"This would look premium with a gradient."
+
+"This section needs a card."
+
+"This needs a glow."
+
+"This empty area needs decoration."
+
+"This headline would look better with highlighted words."
+
+Never style something solely for "visual interest."
+
+============================================================
+DO NOT OVER-ENGINEER CSS
+========================
+
+Prefer simple CSS.
+
+Do not create unnecessary:
+
+pseudo-elements
+complex gradients
+CSS masks
+filters
+backdrop-filter
+multiple shadows
+complex transforms
+absolute-positioned decorations
+large animation definitions
+
+when ordinary CSS solves the problem.
+
+Prefer:
+
+padding
+margin
+gap
+border
+background
+font
+width
+flex
+grid
+
+The CSS should be easy for another developer to understand and modify.
+
+============================================================
+FOLLOW EXISTING PROJECT ARCHITECTURE
+====================================
+
+Before changing UI:
+
+Inspect the existing project.
+
+Determine:
+
+framework
+CSS approach
+existing components
+design tokens
+layouts
+routes
+business logic
+
+Do not introduce a new UI framework.
+
+If Tailwind exists, use Tailwind normally.
+
+If CSS modules exist, continue using them.
+
+If plain CSS exists, continue using it.
+
+Reuse existing components where sensible.
+
+Do not rewrite working business logic merely to change appearance.
+
+============================================================
+DO NOT CHANGE FUNCTIONALITY
 ===========================
-
-Before creating a component, inspect existing components.
-
-Reuse:
-
-buttons
-inputs
-dropdowns
-dialogs
-tabs
-navigation
-tooltips
-toasts
-cards
-tables
-form controls
-
-when appropriate.
-
-Do not create:
-
-Button2
-ModernButton
-FancyButton
-DashboardButton
-
-because a page needs slightly different styling.
-
-Extend the shared system instead.
-
-============================================================
-38. DO NOT BREAK FUNCTIONALITY FOR DESIGN
-=========================================
 
 Preserve:
 
 routing
 authentication
-API calls
+API integration
+state management
 forms
 permissions
-state
 navigation
 business logic
-saved data
-existing behavior
 
-Presentation changes should remain separated from business logic whenever
-possible.
+This task concerns presentation.
+
+Do not redesign application behavior unless explicitly requested.
 
 ============================================================
-39. REFERENCE SCREENSHOT — CORRECT INTERPRETATION
+REFERENCE IMAGE RULE
+====================
+
+The StrataScratch reference is NOT a layout template.
+
+Do NOT copy:
+
+its hero
+its statistics
+its CTA arrangement
+its colors
+its sections
+
+The useful lesson from the reference is simply:
+
+clean alignment
+normal readable typography
+controlled spacing
+clear hierarchy
+restrained CSS
+light surfaces
+simple borders
+clear actions
+consistent sizing
+
+Apply those fundamentals.
+
+Do not recreate its marketing composition.
+
+============================================================
+IMPORTANT: DO NOT "IMPROVE" BEYOND THE REQUIREMENT
 ==================================================
 
-The provided StrataScratch screenshot is a GLOBAL QUALITY REFERENCE.
+When asked to implement a page, implement what the page needs.
 
-Do NOT copy it.
+Do not add extra sections because they might look good.
 
-Do NOT interpret it merely as:
+Do not add visual elements that were not requested or supported by
+existing product functionality.
 
-"centered large heading + CTA buttons."
+Do not make the UI more elaborate than necessary.
 
-Study the deeper qualities:
+A plain interface with excellent:
 
-strong information hierarchy
-carefully controlled width
-intentional spacing
-balanced density
-clear navigation
-excellent alignment
-restrained color
-clean typography
-purposeful actions
-subtle visual treatment
-professional proportions
-content hierarchy
-visual continuity
+spacing
+alignment
+typography
+hierarchy
+responsiveness
 
-Apply those qualities throughout DesignMyPlot.
-
-Different pages should NOT share identical layouts.
-
-They should share the same DESIGN DISCIPLINE.
+is BETTER than an impressive interface full of generated design patterns.
 
 ============================================================
-40. DO NOT MAKE EVERY PAGE LOOK THE SAME
-========================================
+FINAL CSS REVIEW
+================
 
-Consistency means:
+Before finishing, review the CSS.
 
-same typography system
-same spacing logic
-same colors
-same controls
-same interaction behavior
-same visual quality
+Search for unnecessary:
 
-Consistency does NOT mean:
+gradient
+box-shadow
+filter
+backdrop-filter
+blur
+transform
+animation
+absolute positioning
+huge border-radius
+huge font-size
+huge padding
+100vh sections
 
-same hero
-same cards
-same grid
-same alignment
-same page structure
+Remove them unless each one has a clear functional/design reason.
 
-Landing page should feel like marketing.
+Then review the rendered page.
 
-Dashboard should feel like project management.
+Ask:
 
-Create Plot should feel like a focused form.
+Is alignment clean?
 
-Editor should feel like professional software.
+Is text easy to read?
 
-Settings should feel compact and structured.
+Is spacing consistent?
 
-Authentication should feel focused.
+Are controls easy to understand?
 
-They should still clearly belong to the same product.
+Is the primary action obvious?
 
-============================================================
-41. PRODUCT-SPECIFICITY TEST
-============================
+Is anything unnecessarily decorative?
 
-Before considering a page complete, ask:
+Is anything unnecessarily large?
 
-Could I replace "DesignMyPlot" with:
+Is there CSS whose only purpose is to make the page look "fancy"?
 
-AI Assistant
-Finance App
-Fitness Platform
-CRM
-Project Manager
-
-without substantially changing this layout?
-
-If YES, the page may be too generic.
-
-Introduce product-specific structure where appropriate.
-
-The interface should visually communicate what DesignMyPlot actually does.
+If yes, remove or simplify it.
 
 ============================================================
-42. REMOVE STYLING TEST
-=======================
+FINAL RULE
+==========
 
-Imagine removing:
+DO NOT TRY TO MAKE THE UI LOOK AI-DESIGNED, DRIBBBLE-DESIGNED,
+STARTUP-DESIGNED, OR "PREMIUM."
 
-colors
-gradients
-shadows
-icons
-illustrations
-animations
+Make it look like a competent frontend developer carefully wrote the page
+for this specific product.
 
-Would the page STILL have:
+Prefer:
 
-clear hierarchy
-good composition
-logical grouping
-balanced proportions
-good alignment
-intentional spacing?
+ordinary CSS used well
 
-If NO:
+over:
 
-the page is structurally weak.
+clever CSS.
 
-Fix the layout before styling it.
+Prefer:
 
-============================================================
-43. SCREENSHOT REVIEW TEST
-==========================
+clarity
 
-After implementing or significantly changing a page, visually inspect
-the rendered result.
+over:
 
-Do NOT assume correct JSX/CSS means good design.
+visual impact.
 
-Review the actual page at desktop and mobile sizes.
+Prefer:
 
-Check:
+content
 
-- Is there excessive empty space?
-- Is anything awkwardly centered?
-- Is the content too narrow?
-- Is the content unnecessarily wide?
-- Is the heading disproportionately large?
-- Is the footer appearing too early?
-- Are cards being overused?
-- Are controls aligned properly?
-- Is the primary action obvious?
-- Does the page feel balanced?
-- Does the product itself have visual presence?
+over:
 
-If something looks generated, unfinished, or templated, revise it.
+decoration.
 
-============================================================
-44. SECOND-PASS DESIGN REQUIREMENT
-==================================
+Prefer:
 
-NEVER consider the first visually valid implementation finished.
+simple structure
 
-Perform a second design pass.
+over:
 
-FIRST PASS:
-make the page functional and establish hierarchy.
+composition tricks.
 
-SECOND PASS:
-refine composition, proportions, spacing, typography, alignment,
-density, responsive behavior, and visual consistency.
+Prefer:
 
-Remove unnecessary UI during the second pass.
+usable
 
-Do not automatically add more elements.
+over:
 
-============================================================
-45. DESIGN BY SUBTRACTION
-=========================
+impressive.
 
-When something feels visually wrong, first ask:
-
-"What can be removed?"
-
-before asking:
-
-"What can be added?"
-
-Common candidates:
-
-unnecessary card
-unnecessary icon
-unnecessary badge
-unnecessary heading
-duplicate description
-extra button
-decorative background
-excessive border
-excessive shadow
-
-Simple interfaces should result from deliberate editing.
-
-============================================================
-46. FINAL HUMAN-DESIGN CHECK
-============================
-
-Before finishing ANY page, ask:
-
-Does every major element have a reason to exist?
-
-Is the page organized around what the user wants to accomplish?
-
-Does hierarchy work without relying on decoration?
-
-Does whitespace organize rather than dominate?
-
-Are proportions natural?
-
-Does the page have enough meaningful visual content?
-
-Is anything oversized merely to fill space?
-
-Are there unnecessary cards?
-
-Are there unnecessary pills?
-
-Are there unnecessary gradients?
-
-Is everything unnecessarily centered?
-
-Is the primary action clear?
-
-Does the UI communicate DesignMyPlot specifically?
-
-Does it feel like part of the same product as other pages?
-
-Would an experienced product designer likely simplify anything?
-
-If yes, simplify it.
-
-============================================================
-47. FINAL ANTI-AI UI TEST
-=========================
-
-The final interface must NOT look like the result of a prompt such as:
-
-"Create a beautiful modern SaaS UI."
-
-It should look like someone:
-
-understood the product,
-understood the user,
-organized the information,
-designed the interaction,
-refined the composition,
-then applied styling.
-
-FUNCTION FIRST.
-HIERARCHY SECOND.
-COMPOSITION THIRD.
-CONSISTENCY FOURTH.
-STYLING FIFTH.
-DECORATION LAST.
-
-When uncertain, choose the solution that is:
-
-simpler
-clearer
-more useful
-more product-specific
-less decorative
-more intentional.
+When uncertain, choose the boring solution and execute it extremely well.

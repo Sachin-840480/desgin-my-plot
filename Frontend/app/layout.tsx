@@ -23,7 +23,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} h-full`}>
       <body className="min-h-full flex flex-col" style={{ fontFamily: 'var(--font-inter), Inter, system-ui, sans-serif' }}>
-        <ClerkProvider>
+        <ClerkProvider
+          appearance={{
+            baseTheme: 'light',
+          }}
+        >
           {children}
         </ClerkProvider>
       </body>
