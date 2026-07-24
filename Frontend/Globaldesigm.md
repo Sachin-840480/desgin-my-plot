@@ -1,900 +1,753 @@
 
-# GLOBAL FRONTEND UI RULE — NATURAL, HUMAN-WRITTEN CSS
-
-This instruction applies to ALL frontend work in this project.
-
-The goal is NOT to generate a "beautiful modern UI".
-
-The goal is to build a clean, normal, well-structured interface that feels
-like a frontend developer manually designed and coded it.
+# UI RULE — BUILD LIKE A HUMAN FRONTEND DEV, NOT AN AI GENERATOR
 
-Do not use the visual habits commonly produced by AI website generators.
+Applies to all frontend/CSS work in this project, except Clerk-hosted
+sign-in and sign-up under `/auth/*` (Clerk default UI only: no `.app-ui`
+wrapper, no Tailwind preflight on auth, no shared button/input rules).
 
-============================================================
-CORE RULE
-=========
+Scope all application styles under `.app-ui` only.
 
-STOP trying to make the interface look impressive.
+---
 
-Do not "enhance" the UI.
+# Goal
 
-Do not "modernize" it using decorative CSS.
+Build interfaces that feel like they were implemented by an experienced
+frontend engineer maintaining a real SaaS product.
 
-Do not generate a Dribbble-style, startup-style, SaaS-style, AI-generated,
-or portfolio-showcase interface.
+The objective is **not** to make pages look "modern", "premium", or
+"award-winning".
 
-Write CSS like a careful frontend developer solving ordinary layout,
-readability, spacing, responsiveness, and usability problems.
+The objective is to make pages:
 
-Use ordinary CSS fundamentals:
+- easy to understand
+- easy to scan
+- balanced
+- readable
+- maintainable
+- production-ready
 
-display
-flex
-grid
-gap
-padding
-margin
-width
-max-width
-min-width
-font-size
-font-weight
-line-height
-border
-border-radius
-background
-color
-position
+A user should notice the content first—not the styling.
 
-Use advanced/decorative CSS only when there is an actual functional reason.
+If every color were removed and the page became grayscale, the layout should
+still feel organized and usable.
 
-============================================================
-DO NOT DESIGN FROM VISUAL TRENDS
-================================
+---
 
-Never begin by asking:
+# Design Philosophy
 
-"How can I make this look modern?"
+Think like an engineer solving layout problems.
 
-Instead ask:
+Not like a designer decorating a canvas.
 
-"What is the simplest layout that makes this content easy to use?"
+Before writing CSS, always ask:
 
-Do not automatically use patterns associated with generated websites.
+> What problem does this styling solve?
 
-Specifically avoid automatically creating:
+Examples:
 
-- giant hero sections
-- split-screen hero layouts
-- oversized headlines
-- highlighted words inside headlines
-- gradient text
-- gradients
-- glows
-- blurred background shapes
-- glassmorphism
-- floating cards
-- decorative mockups
-- fake browser windows
-- excessive rounded rectangles
-- pill labels above headings
-- eyebrow labels
-- excessive badges
-- large CTA blocks
-- feature-card grids
-- statistic blocks
-- decorative illustrations
-- abstract graphics
-- fancy dividers
-- oversized empty space
-- unnecessary animations
-- decorative grid backgrounds
-- dark "premium" themes
-- random accent colors
-- excessive shadows
+✓ Content needs a readable width.
 
-Do not use these unless the existing product genuinely requires one.
+✓ This section needs separation.
 
-============================================================
-NO AUTOMATIC HERO DESIGN
-========================
+✓ These controls belong together.
 
-A landing page does NOT automatically require a "hero".
+✓ The primary action should be obvious.
 
-Do not automatically create:
+Never ask:
 
-small uppercase label
+> "How can I make this look cooler?"
 
-BIG HEADLINE WITH
-COLORED WORDS
+---
 
-marketing paragraph
+# Design References
 
-[Large CTA →]
+Use the design philosophy of products such as:
 
-    decorative product mockup
+- GitHub
+- Stripe Dashboard
+- Stripe Docs
+- Linear
+- Vercel Dashboard
+- React.dev
+- Notion
+- Clerk Dashboard
+- MDN
 
-This pattern is specifically unwanted.
+**Not because they are minimal.**
 
-If the page only needs:
+Because they solve usability with:
 
-heading
-description
-button
-product information
+- spacing
+- alignment
+- typography
+- hierarchy
+- composition
 
-then arrange those things normally.
+rather than decoration.
 
-Do not transform ordinary content into a marketing composition.
+Do **NOT** copy their UI.
 
-============================================================
-DO NOT STYLE TEXT FOR DRAMA
-===========================
+Do **NOT** recreate their layouts.
 
-Headings should communicate hierarchy, not create visual spectacle.
+Only borrow their engineering philosophy.
 
-Do not automatically:
+Never build pages that resemble:
 
-- make headings 60px+
-- split headings across multiple lines
-- color individual words
-- use gradient text
-- use extremely heavy font weights
-- use huge differences between heading and body text
-- use uppercase letter-spaced labels above headings
+- AI-generated landing pages
+- Dribbble concepts
+- award-site portfolios
+- startup template websites
 
-Use ordinary typography.
+The page should feel professionally engineered—not artistically designed.
 
-Typical starting direction:
+---
 
-body:
-16px
+# Core Question
 
-small text:
-13-14px
+Never ask
 
-normal page heading:
-32-40px
+> "How do I make this impressive?"
 
-section heading:
-22-28px
+Always ask
 
-component heading:
-16-20px
+> "What's the simplest layout that makes this content usable?"
 
-These are guidelines, not requirements.
+---
 
-If 36px works, do not use 64px.
+# Layout Philosophy
 
-============================================================
-USE NORMAL COLORS
-=================
+Content determines layout.
 
-Use a simple product palette.
+Never create layout for visual effect.
 
-For DesignMyPlot:
+Every page should naturally flow from the information it contains.
 
-background:
-light neutral / warm white
-
-text:
-near-black
-
-secondary text:
-gray
-
-brand:
-earthy orange
-
-border:
-light neutral gray
-
-That is enough for most pages.
-
-Do NOT create multiple shades simply to make the interface look sophisticated.
-
-Do not automatically create a dark theme.
-
-Do not use orange everywhere just because it is the brand color.
-
-Brand color should primarily identify:
-
-primary actions
-selected states
-links where appropriate
-small important details
-
-Most of the interface should remain neutral.
-
-============================================================
-USE NORMAL BACKGROUNDS
-======================
-
-Prefer:
-
-background: #fff;
-
-or a subtle warm neutral.
-
-Do not automatically use:
-
-linear-gradient(...)
-radial-gradient(...)
-background-image
-blurred pseudo-elements
-pattern overlays
-grid backgrounds
-noise textures
-
-A plain background is completely acceptable.
-
-Do not decorate empty space.
-
-============================================================
-USE BORDERS BEFORE SHADOWS
-==========================
-
-For separation, first consider:
-
-spacing
-
-then:
-
-1px border
-
-then, only if elevation is actually required:
-
-a subtle shadow.
-
-Do not automatically add box-shadow to:
-
-buttons
-cards
-inputs
-navigation
-sections
-images
-
-A normal border is often enough.
-
-============================================================
-KEEP BORDER RADIUS RESTRAINED
-=============================
-
-Do not round everything.
-
-Suggested general direction:
-
-inputs:
-4-8px
-
-buttons:
-4-8px
-
-cards/panels:
-6-10px
-
-Some elements can have no radius.
-
-Avoid automatically using:
-
-12px
-16px
-20px
-24px
-9999px
-
-everywhere.
-
-Pills should only be used when the component is actually pill-like.
-
-============================================================
-BUTTONS SHOULD LOOK LIKE BUTTONS
-================================
-
-A normal primary button can simply be:
-
-brand background
-white text
-normal padding
-small border radius
-
-Do not automatically add:
-
-shadow
-glow
-gradient
-large arrow icon
-scale animation
-oversized padding
-
-Hover can simply change the background slightly.
-
-Do not make buttons visually dramatic.
-
-============================================================
-DO NOT TURN CONTENT INTO CARDS
-==============================
-
-Content does not need a rectangle around it merely because it is grouped.
-
-Prefer:
-
-heading
-text
-spacing
-divider
-
-before:
-
-card
-
-Use a card only when the boundary helps the user understand the interface.
-
-If cards are necessary, keep them simple:
-
-plain background
-1px border
-small radius
-normal padding
-
-No floating effect unless functionally appropriate.
-
-============================================================
-SPACING SHOULD FEEL MANUAL
-==========================
-
-Do not create enormous whitespace to make the page look premium.
-
-Use practical spacing.
-
-For example:
-
-8px   small relationship
-12px
-16px  common spacing
-24px  component separation
-32px  larger separation
-48px  section separation
-64px  major separation
-
-Use larger values only when the composition genuinely needs them.
-
-Do not vertically center small content inside the entire browser window.
-
-Do not use min-height: 100vh merely for appearance.
-
-============================================================
-CONTAINERS SHOULD BE PRACTICAL
-==============================
-
-Use a straightforward content container.
-
-For example:
-
-max-width around 1100-1200px
-margin: 0 auto
-normal horizontal padding
-
-Do not artificially make content extremely narrow.
-
-Do not create excessive nested containers.
-
-Avoid:
-
-container
-  wrapper
-    inner
-      content-wrapper
-        card
-
-when one or two elements would work.
-
-============================================================
-LAYOUT SHOULD COME FROM CONTENT
-===============================
-
-Use flexbox when arranging things in one direction.
-
-Use grid when the content genuinely forms a grid.
-
-Do not use Grid simply to create a visually impressive composition.
-
-Do not create asymmetry just because it looks editorial.
-
-Do not create symmetry just because it looks clean.
-
-Follow the content.
-
-============================================================
-LANDING PAGE RULE
-=================
-
-For the DesignMyPlot landing page:
-
-Keep it straightforward.
-
-A reasonable structure is:
+Landing pages:
 
 Header
 
-Main introduction
+↓
 
-Useful explanation of what DesignMyPlot does
+Introduction
+
+↓
 
 Primary action
 
-Actual product information / preview if one exists
+↓
 
-Features or workflow
+Real product preview (if one exists)
+
+↓
+
+Features / workflow
+
+↓
 
 Footer
 
-Do NOT force all of this into one screen.
+Dashboards:
 
-Do NOT create a giant marketing hero.
+Title + description
 
-Do NOT create a fake drawing/editor preview purely for decoration.
+↓
 
-If an actual application screenshot or real product component exists,
-it may be shown.
+Primary action
 
-Do not invent one merely to make the landing page look richer.
+↓
 
-============================================================
-APPLICATION PAGE RULE
-=====================
+Toolbar
 
-Application pages should look like application pages.
+↓
 
-Use straightforward structures such as:
+Real content
 
-Page title                         Primary action
+Forms:
+
+Title
+
+↓
 
 Description
 
----
+↓
 
-Actual content
+Fields
 
-For example:
+↓
 
-My Plots                         [Create plot]
+Actions
 
-View and manage your saved plots.
+Avoid decorative wrappers.
 
----
+Avoid unnecessary nesting.
 
-Search...                       Sort by ▾
-
-Plot name       Size       Modified       Status
-Home Plot       40×60      Today          Draft
-Farm            2 acres    Yesterday      Saved
-
-This is preferable to turning every plot into a large decorative card.
-
-============================================================
-FORM RULE
-=========
-
-Forms should be ordinary, readable forms.
-
-Example:
-
-Create plot
-
-Enter the dimensions of your land.
-
-Plot name
-[____________________________]
-
-Width
-[____________]
-
-Length
-[____________]
-
-Unit
-[Feet ▾]
-
-[Cancel]   [Create plot]
-
-Do NOT put this inside a giant floating card unless necessary.
-
-Do NOT add an illustration merely to balance the screen.
-
-Do NOT add motivational copy.
-
-Do NOT add icons to every field.
-
-============================================================
-EDITOR RULE
-===========
-
-The plot editor is a tool.
-
-Optimize it for work.
-
-Example:
+Avoid empty filler sections.
 
 ---
 
-Back     Plot name                     Save        Export
----------------------------------------------------------
+# Visual Hierarchy
 
-Tools       |
-            |
-Select      |
-Boundary    |            CANVAS
-Building    |
-Road        |
-Tree        |
-            |
--------------
+Hierarchy should come from:
 
-Keep toolbars compact.
+- spacing
+- typography
+- alignment
+- grouping
 
-Use plain controls.
+Not from:
 
-Do not make tool buttons large decorative cards.
+- gradients
+- shadows
+- oversized fonts
+- decorative colors
+- animations
 
-Do not make the editor look like a marketing page.
+The page should remain readable when printed in black and white.
 
-============================================================
-NAVIGATION RULE
-===============
+---
 
-Use a normal navigation bar.
+# The AI-Tell Blocklist
 
-Logo
-navigation links
-account/action
+Do not use these unless the product genuinely needs them:
 
-Normal height.
-Normal spacing.
-Simple active state.
-Subtle bottom border if useful.
+- giant hero sections
+- split-screen heroes
+- oversized marketing headlines
+- gradient text
+- gradient backgrounds
+- glassmorphism
+- glowing buttons
+- blurred decorative shapes
+- floating cards
+- fake browser mockups
+- excessive badges
+- eyebrow labels
+- feature-card grids
+- fake statistics
+- decorative illustrations
+- giant empty whitespace
+- centered pages using `min-height:100vh`
+- scroll animations
+- reveal animations
+- parallax
+- floating effects
+- pulsing effects
+- bouncing elements
+- shadows on everything
+- random accent colors
+- icons everywhere
+- oversized rounded corners
+- pill buttons everywhere
+- wrapper soup
 
-Do not make navigation float.
+---
 
-Do not put the navbar inside a rounded container.
+# Typography
 
-Do not use glass effects.
+Typography should carry the design.
 
-Do not add decorative shadows without reason.
+Body:
 
-============================================================
-ICONS
-=====
+16px
 
-Icons are optional.
+Small text:
 
-Text is often enough.
+13–14px
 
-Use icons when they make controls easier to recognize.
+Heading scale:
 
-Do not add icons to:
+H1 → 34–40px
 
-every heading
-every button
-every input
-every feature
-every navigation item
+H2 → 24–28px
 
-Do not place every icon inside a colored circle or square.
+H3 → 18–20px
 
-============================================================
-ANIMATION
-=========
+Avoid:
 
-Do not add animation unless interaction benefits from it.
+- 64px marketing headlines
+- gradient text
+- color-per-word headlines
+- uppercase eyebrow labels
+- heavy font weights everywhere
+- excessive letter spacing
 
-Normal hover/focus transitions are enough.
+Use bold only where hierarchy requires it.
 
-Approximately 100-200ms is generally sufficient.
+---
 
-Do not add:
+# Color
 
-floating
-bouncing
-pulsing
-scroll reveal
-fade-up-on-everything
-parallax
-animated gradients
+Most of the interface should remain neutral.
 
-unless explicitly requested.
+Use:
 
-============================================================
-DO NOT INVENT UI
-================
+- neutral background
+- near-black text
+- muted gray text
+- subtle borders
+- one brand color
 
-Never invent content or interface elements just to improve appearance.
+Brand color should only indicate:
 
-Do not invent:
+- primary buttons
+- links
+- selected states
+- focus states
 
-statistics
-testimonials
-customer logos
-fake projects
-fake notifications
-fake maps
-fake editor screenshots
-fake activity
-fake charts
-fake analytics
-fake features
+Never color entire sections simply for visual interest.
 
-Use actual product information.
+---
 
-If there is little content, a simple page is acceptable.
+# Backgrounds
 
-============================================================
-HUMAN CSS PRINCIPLE
-===================
+Prefer plain backgrounds.
 
-CSS should appear to have been written because a developer encountered
-a specific layout problem and solved it.
+No:
 
-GOOD reasoning:
+- gradients
+- blur
+- decorative textures
+- patterns
+- glowing backgrounds
 
-"The content needs a maximum width."
+Whitespace is usually a better separator than decoration.
 
-"The button needs enough padding to be clickable."
+---
 
-"These two controls belong together, so use an 8px gap."
+# Borders, Radius & Shadows
 
-"This section is separate, so give it more top margin."
+Prefer separation in this order:
 
-"The border distinguishes the toolbar from the canvas."
+1. spacing
+2. border
+3. shadow (only if actual elevation is needed)
 
-"The text is secondary, so reduce its contrast."
+Radius:
 
-BAD reasoning:
+Inputs:
 
-"This needs more visual interest."
+4–6px
 
-"This would look premium with a gradient."
+Buttons:
 
-"This section needs a card."
+4–6px
 
-"This needs a glow."
+Cards:
 
-"This empty area needs decoration."
+6–8px
 
-"This headline would look better with highlighted words."
+Avoid oversized rounded corners.
 
-Never style something solely for "visual interest."
+Avoid floating effects.
 
-============================================================
-DO NOT OVER-ENGINEER CSS
-========================
+---
 
-Prefer simple CSS.
+# Buttons
 
-Do not create unnecessary:
+Buttons should simply look clickable.
 
-pseudo-elements
-complex gradients
-CSS masks
-filters
-backdrop-filter
-multiple shadows
-complex transforms
-absolute-positioned decorations
-large animation definitions
+Use:
 
-when ordinary CSS solves the problem.
+- normal padding
+- small radius
+- one brand color
+- subtle hover
+
+Avoid:
+
+- glow
+- gradients
+- scaling
+- bouncing
+- oversized icons
+- unnecessary arrows
+
+---
+
+# Cards
+
+Do not wrap everything inside cards.
+
+Cards exist only when they improve comprehension.
+
+Default card:
+
+- white background
+- 1px border
+- 6–8px radius
+- no shadow
+
+Often:
+
+Heading
+
+↓
+
+Paragraph
+
+↓
+
+Divider
+
+works better than another card.
+
+---
+
+# Spacing
+
+Spacing is the primary design tool.
+
+Use a consistent spacing scale:
+
+8
+
+12
+
+16
+
+24
+
+32
+
+48
+
+64
+
+Large whitespace should improve readability.
+
+Never use whitespace to fake elegance.
+
+---
+
+# Containers
+
+Content container:
+
+1080–1200px
+
+Readable text width:
+
+60–75 characters
+
+Never stretch paragraphs across the entire viewport.
+
+---
+
+# Alignment
+
+Everything should align to an invisible grid.
+
+Buttons align with text.
+
+Sections align with each other.
+
+Titles align with content.
+
+Never offset things simply because it looks artistic.
+
+---
+
+# Layout
 
 Prefer:
 
-padding
-margin
-gap
-border
-background
-font
-width
-flex
-grid
+Flexbox
 
-The CSS should be easy for another developer to understand and modify.
+for one-dimensional layouts.
 
-============================================================
-FOLLOW EXISTING PROJECT ARCHITECTURE
-====================================
+Use Grid only when content naturally forms a grid.
+
+Never use layout purely for visual composition.
+
+---
+
+# Navigation
+
+Simple navigation:
+
+Logo
+
+Links
+
+Account action
+
+Height:
+
+56–64px
+
+Optional bottom border.
+
+No floating navbar.
+
+No glass.
+
+No blur.
+
+No unnecessary shadow.
+
+---
+
+# Landing Pages
+
+A landing page should explain the product.
+
+Not market the product.
+
+Use:
+
+Header
+
+↓
+
+Introduction
+
+↓
+
+Primary action
+
+↓
+
+Real product preview
+
+↓
+
+Workflow
+
+↓
+
+Features
+
+↓
+
+Footer
+
+Never invent:
+
+- testimonials
+- company logos
+- fake metrics
+- fake screenshots
+- fake charts
+
+Sparse but honest is better than decorative.
+
+---
+
+# Dashboards
+
+Prefer interfaces like:
+
+My Items                        [Create]
+
+Manage your saved items.
+
+---
+
+Search...                Sort by
+
+---
+
+Table
+
+over decorative cards.
+
+Optimize for work—not marketing.
+
+---
+
+# Forms
+
+Use:
+
+Label
+
+↓
+
+Input
+
+↓
+
+Help text (if needed)
+
+↓
+
+Actions
+
+No illustrations.
+
+No giant floating form cards.
+
+No motivational copy.
+
+---
+
+# Tool / Editor Interfaces
+
+Optimize for productivity.
+
+Compact toolbar.
+
+Large workspace.
+
+Simple controls.
+
+No marketing layout.
+
+---
+
+# Never Invent Content
+
+Never fabricate:
+
+- stats
+- charts
+- customer logos
+- testimonials
+- screenshots
+- notifications
+
+Real content only.
+
+---
+
+# CSS Philosophy
+
+Write CSS like someone maintaining a production codebase.
+
+Prefer using:
+
+- margin
+- padding
+- display
+- gap
+- border
+- max-width
+- line-height
+- font-size
+
+before using:
+
+- transform
+- filter
+- backdrop-filter
+- blur
+- absolute positioning
+- animations
+- box-shadow
+
+Use the simplest CSS that solves the layout problem.
+
+---
+
+# Respect Existing Code
 
 Before changing UI:
 
-Inspect the existing project.
+Check the existing:
 
-Determine:
+- framework
+- CSS methodology
+- component structure
+- design tokens
 
-framework
-CSS approach
-existing components
-design tokens
-layouts
-routes
-business logic
+Stay consistent.
 
-Do not introduce a new UI framework.
+Do not introduce another UI framework.
 
-If Tailwind exists, use Tailwind normally.
+Do not rewrite:
 
-If CSS modules exist, continue using them.
+- routing
+- authentication
+- API calls
+- business logic
+- forms
+- permissions
+- state management
 
-If plain CSS exists, continue using it.
+This is a presentation-only pass.
 
-Reuse existing components where sensible.
+---
 
-Do not rewrite working business logic merely to change appearance.
+# Don't Over-Deliver
 
-============================================================
-DO NOT CHANGE FUNCTIONALITY
-===========================
+Implement exactly what was requested.
 
-Preserve:
+Don't add:
 
-routing
-authentication
-API integration
-state management
-forms
-permissions
-navigation
-business logic
+- extra sections
+- decorative content
+- "nice-to-have" polish
+- invented product features
 
-This task concerns presentation.
+A clean, well-aligned page is better than an elaborate one.
 
-Do not redesign application behavior unless explicitly requested.
+---
 
-============================================================
-REFERENCE IMAGE RULE
-====================
+# Final Self Review
 
-The StrataScratch reference is NOT a layout template.
+Before finishing:
 
-Do NOT copy:
+Search your CSS for:
 
-its hero
-its statistics
-its CTA arrangement
-its colors
-its sections
+- gradient
+- box-shadow
+- filter
+- backdrop-filter
+- blur
+- transform
+- animation
+- absolute positioning
+- huge border-radius
+- huge font-size
+- min-height:100vh
 
-The useful lesson from the reference is simply:
+For every occurrence ask:
 
-clean alignment
-normal readable typography
-controlled spacing
-clear hierarchy
-restrained CSS
-light surfaces
-simple borders
-clear actions
-consistent sizing
+**Does this solve a real problem?**
 
-Apply those fundamentals.
+If not,
 
-Do not recreate its marketing composition.
+remove it.
 
-============================================================
-IMPORTANT: DO NOT "IMPROVE" BEYOND THE REQUIREMENT
-==================================================
+Then review the page:
 
-When asked to implement a page, implement what the page needs.
+- Is alignment consistent?
+- Is spacing consistent?
+- Is typography carrying the design?
+- Is the reading order obvious?
+- Is the primary action obvious?
+- Could this page work without colors?
+- Is anything decorative without purpose?
 
-Do not add extra sections because they might look good.
+If yes,
 
-Do not add visual elements that were not requested or supported by
-existing product functionality.
+simplify it.
 
-Do not make the UI more elaborate than necessary.
+---
 
-A plain interface with excellent:
+# One-Line Summary
 
-spacing
-alignment
-typography
-hierarchy
-responsiveness
+Prefer ordinary CSS used exceptionally well over clever CSS.
 
-is BETTER than an impressive interface full of generated design patterns.
+Prefer spacing over decoration.
 
-============================================================
-FINAL CSS REVIEW
-================
+Prefer typography over effects.
 
-Before finishing, review the CSS.
+Prefer hierarchy over marketing.
 
-Search for unnecessary:
+Prefer usability over visual impact.
 
-gradient
-box-shadow
-filter
-backdrop-filter
-blur
-transform
-animation
-absolute positioning
-huge border-radius
-huge font-size
-huge padding
-100vh sections
+Prefer content over ornament.
 
-Remove them unless each one has a clear functional/design reason.
+When unsure, choose the simpler solution.
 
-Then review the rendered page.
+---
 
-Ask:
+# Guiding Principle
 
-Is alignment clean?
+Design pages like they were built by an experienced SaaS frontend engineer working on products such as GitHub, Stripe Docs, Linear, Vercel, Notion, or Clerk—not like a Dribbble concept or an AI website generator.
 
-Is text easy to read?
+Prioritize composition, spacing, typography, alignment, and information hierarchy over visual decoration.
 
-Is spacing consistent?
-
-Are controls easy to understand?
-
-Is the primary action obvious?
-
-Is anything unnecessarily decorative?
-
-Is anything unnecessarily large?
-
-Is there CSS whose only purpose is to make the page look "fancy"?
-
-If yes, remove or simplify it.
-
-============================================================
-FINAL RULE
-==========
-
-DO NOT TRY TO MAKE THE UI LOOK AI-DESIGNED, DRIBBBLE-DESIGNED,
-STARTUP-DESIGNED, OR "PREMIUM."
-
-Make it look like a competent frontend developer carefully wrote the page
-for this specific product.
-
-Prefer:
-
-ordinary CSS used well
-
-over:
-
-clever CSS.
-
-Prefer:
-
-clarity
-
-over:
-
-visual impact.
-
-Prefer:
-
-content
-
-over:
-
-decoration.
-
-Prefer:
-
-simple structure
-
-over:
-
-composition tricks.
-
-Prefer:
-
-usable
-
-over:
-
-impressive.
-
-When uncertain, choose the boring solution and execute it extremely well.
+The page should look professionally engineered rather than artistically designed.
