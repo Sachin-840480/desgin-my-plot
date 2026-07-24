@@ -34,3 +34,6 @@ coverage/
 # local databases
 *.sqlite
 *.db
+
+# .venv environment
+.venv
