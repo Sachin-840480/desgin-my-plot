@@ -1,98 +1,92 @@
-
-This is what most AI models need.
-
-Instead of
-
-Make a button
-
-they need to know how your project builds buttons.
-
-Example:
-
 # Component Conventions
 
-## Components solve one responsibility.
+Components should make the product easier to reason about. Avoid building a component library before the product has stable patterns.
 
-Avoid components that mix:
+## Responsibility
 
-- layout
-- styling
-- business logic
+Each component should own one clear concern:
 
----
+- Layout composition
+- Data display
+- User input
+- Navigation
+- Feedback state
 
-## Prefer composition.
+Avoid components that combine layout, data fetching, business rules, and visual styling in one place.
 
-Bad
+## Composition
 
+Prefer simple composition over nested component chains.
+
+Bad:
+
+```tsx
 <Page>
+  <Card>
+    <CardBody>
+      <CardContent>
+        <ContentWrapper />
+      </CardContent>
+    </CardBody>
+  </Card>
+</Page>
+```
 
-<Card>
+Better:
 
-<CardBody>
-
-<CardContent>
-
-<ContentWrapper>
-
-Good
-
-<Page>
-
-<section>
-
----
+```tsx
+<main>
+  <section>
+    <ProjectSummary />
+  </section>
+</main>
+```
 
 ## Buttons
 
-Buttons are ordinary.
+Buttons should be ordinary and predictable.
 
-No icons unless the action genuinely benefits.
-
-Normal padding.
-
-Small radius.
-
-One accent color.
-
----
+- Use icons only when the icon improves recognition.
+- Keep padding modest.
+- Use small radius.
+- Use one primary accent style.
+- Do not make every action visually loud.
 
 ## Forms
 
-Label
+Use a stable field structure:
 
-↓
+```text
+Label -> Input -> Help text -> Error -> Action
+```
 
-Input
+Rules:
 
-↓
-
-Help text
-
-↓
-
-Error
-
-↓
-
-Action
-
-No floating labels.
-
-No icon inside every field.
-
----
+- No floating labels.
+- No decorative icons inside every field.
+- Validation messages should be specific.
+- Required fields should be clear.
+- Submit actions should describe the operation.
 
 ## Tables
 
-Prefer tables whenever users compare data.
+Use tables when users compare structured data.
 
-Do not replace tables with decorative cards.
-
----
+Do not replace comparable rows with decorative cards. Cards are worse when users need to scan names, status, dates, counts, or actions.
 
 ## Lists
 
-Prefer ordinary lists.
+Use ordinary lists for simple sequences.
 
-Only convert to cards if interaction requires it.
+Convert a list item into a card only when the item has multiple actions, nested metadata, or a meaningful independent state.
+
+## Empty And Error States
+
+Every data-driven component should define:
+
+- Loading state
+- Empty state
+- Error state
+- Permission denied state, when relevant
+
+Do not hide missing backend behavior behind polished static UI.

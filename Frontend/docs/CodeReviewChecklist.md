@@ -1,73 +1,52 @@
-This is where your prompt becomes extremely powerful.
-
-Example:
-
 # Frontend Review Checklist
 
-Review every page like a senior frontend engineer.
+Use this checklist before considering any UI work complete. The goal is not to make the screen look impressive in isolation. The goal is to make the product easier to understand, use, maintain, and extend.
 
-## Structure
+## Product Fit
 
-□ Can any wrapper be removed?
+- Does the screen support a real user workflow?
+- Is every section tied to a user decision or action?
+- Is placeholder or fake content avoided?
+- Would the UI still make sense with real data, empty data, and error states?
 
-□ Does every section solve a problem?
+## Information Architecture
 
-□ Is the DOM unnecessarily deep?
-
----
+- Is the primary user goal obvious within a few seconds?
+- Is the reading order clear from top to bottom and left to right?
+- Are related controls grouped together?
+- Can the page be understood without relying only on color?
 
 ## Layout
 
-□ Is alignment consistent?
-
-□ Does layout follow content?
-
-□ Is reading order obvious?
-
-□ Does spacing create hierarchy?
-
----
-
-## Typography
-
-□ Can hierarchy be understood without color?
-
-□ Are headings appropriately sized?
-
-□ Is bold used sparingly?
-
----
+- Can any wrapper or section be removed?
+- Does spacing create hierarchy instead of decoration?
+- Is alignment consistent across repeated elements?
+- Does the layout adapt cleanly on mobile and desktop?
+- Are cards used only when they frame a real unit of interaction or comparison?
 
 ## Components
 
-□ Are cards necessary?
-
-□ Are buttons ordinary?
-
-□ Is every component solving one responsibility?
-
----
+- Does each component have one responsibility?
+- Are forms, buttons, lists, and tables using the project conventions?
+- Are repeated patterns consistent across screens?
+- Is component composition simple enough for another engineer to maintain?
 
 ## CSS
 
-□ Does every CSS rule solve a real problem?
+- Does every CSS rule solve a layout, readability, or state problem?
+- Are effects such as shadows, animations, filters, and absolute positioning justified?
+- Are spacing, radius, font size, and max width using predictable values?
+- Is the DOM simpler than the styling suggests?
 
-□ Is any styling decorative without purpose?
+## Accessibility
 
----
+- Are labels, focus states, and keyboard paths handled?
+- Is contrast sufficient?
+- Are buttons and links semantically correct?
+- Are loading, empty, and error states understandable?
 
-## Product
+## Final Review Question
 
-□ Is every section supported by real functionality?
+Would a senior frontend engineer believe this was designed for a real product workflow?
 
-□ Is fake content avoided?
-
----
-
-## Final Question
-
-Would another experienced frontend engineer believe this page was hand-built for a production application?
-
-If not,
-
-simplify.
+If the answer is no, simplify the page before adding more visual treatment.

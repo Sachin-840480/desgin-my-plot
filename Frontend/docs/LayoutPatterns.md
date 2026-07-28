@@ -1,126 +1,98 @@
-
-This is probably the biggest improvement.
-
-You want to teach composition, not CSS.
-
-Example:
-
 # Layout Patterns
 
-Layout should emerge from content.
+Layout should emerge from the user's workflow. Do not start from a generic page template.
 
-Never from trends.
+## Landing Page
 
----
+Use a landing page only when the screen needs to explain the product or guide a new user.
 
-## Landing Pages
+Possible structure:
 
-Possible composition:
-
+```text
 Header
-
-↓
-
 Introduction
-
-↓
-
-Primary Action
-
-↓
-
-Product Preview
-
-↓
-
-Workflow
-
-↓
-
-Feature Explanation
-
-↓
-
+Primary action
+Product preview or workflow example
+Feature explanation
 Footer
+```
 
-Not every landing page requires every section.
+Not every landing page requires every section. Remove sections that do not answer a real user question.
 
----
+## Dashboard
 
-## Dashboards
+Dashboards should prioritize action and scanning.
 
+Recommended structure:
+
+```text
 Title
+Short description
+Primary actions
+Toolbar or filters
+Main content
+```
 
-↓
-
-Description
-
-↓
-
-Actions
-
-↓
-
-Toolbar
-
-↓
-
-Content
-
-Avoid statistic cards unless statistics are the product.
-
----
+Avoid statistic cards unless the statistics are central to the user's job.
 
 ## Workspace
 
+Workspace screens should make the active object obvious.
+
+Recommended structure:
+
+```text
 Toolbar
+Workspace canvas or main area
+Inspector or side panel, when needed
+Status or feedback region
+```
 
-↓
-
-Workspace
-
-↓
-
-Inspector (optional)
-
----
+Do not hide primary actions inside decorative cards.
 
 ## Forms
 
+Forms should be direct and readable.
+
+Recommended structure:
+
+```text
 Title
-
-↓
-
 Description
-
-↓
-
 Fields
-
-↓
-
+Validation feedback
 Actions
+```
 
-Never center a form simply because it looks balanced.
+Never center a complex form only because it looks balanced. Use alignment that improves completion speed and error recovery.
 
----
+## Documentation Or Help
 
-## Documentation
+Documentation screens should optimize reading and navigation.
 
+Recommended structure:
+
+```text
 Title
-
-↓
-
 Description
-
-↓
-
 Navigation
-
-↓
-
 Content
+Related actions
+```
 
-Optimize reading.
+Do not decorate documentation until the reading experience is solid.
 
-Not decoration.
+## Empty States
+
+Empty states should explain what happened and offer the next useful action.
+
+Recommended structure:
+
+```text
+State title
+Specific explanation
+Primary action
+Optional secondary action
+```
+
+Avoid vague empty states like "Nothing here yet" without context.

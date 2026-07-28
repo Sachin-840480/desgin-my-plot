@@ -1,154 +1,117 @@
-
-This is the document your project is missing.
-
-It contains rules that must never be broken.
-
-Example:
-
 # UI Execution Rules
 
-These rules override default LLM behaviour.
-
----
+These rules override default LLM UI behavior.
 
 ## Before Writing Code
 
-Perform the following reasoning internally.
-
-Do not output this reasoning unless explicitly requested.
-
-Determine:
+Reason internally about:
 
 - Page purpose
 - User goal
 - Information hierarchy
 - Layout composition
+- Primary action
+- Loading, empty, and error states
 
-Only after this should JSX/CSS be generated.
-
----
+Only after this should JSX and CSS be generated.
 
 ## Never Start From Templates
 
-Do not automatically generate:
+Do not automatically generate this pattern:
 
+```text
 Header
-
-↓
-
-Centered Hero
-
-↓
-
+Centered hero
 Centered CTA
-
-↓
-
-Three Cards
-
-↓
-
+Three cards
 Footer
+```
 
-unless the product requirements naturally lead to this layout.
-
----
+Use it only when the product requirements naturally lead to that structure.
 
 ## Every Section Must Earn Its Place
 
-Never add sections because:
-
-"Landing pages usually have them."
+Never add sections because landing pages usually have them.
 
 Each section must answer:
 
-"What problem does this section solve?"
+```text
+What problem does this section solve?
+```
 
-If none,
-
-remove it.
-
----
+If none, remove it.
 
 ## Every Wrapper Must Earn Its Place
 
-Every div should exist for one reason.
+Every `div` should exist for a reason:
 
-If a wrapper exists only to help styling,
+- Layout
+- Grouping
+- State
+- Accessibility
+- Semantics
 
-ask whether spacing or layout can solve it instead.
-
-Prefer flatter DOM trees.
-
----
+If a wrapper exists only because styling became difficult, reconsider the layout.
 
 ## Every Card Must Earn Its Place
 
 Cards are optional.
 
-Do not wrap every block inside another container.
+Use cards for:
 
-If spacing and typography communicate hierarchy,
+- Repeated entities
+- Isolated controls
+- Modals
+- Focused summaries
+- Interactive records
 
-do not introduce another card.
-
----
+Do not wrap every section in a card. If spacing and typography communicate hierarchy, avoid adding another container.
 
 ## Layout Before Styling
 
-Never think about colors first.
+Do not begin with:
 
-Never think about buttons first.
+- Colors
+- Gradients
+- Cards
+- Buttons
+- Shadows
+- Animation
 
-Never think about cards first.
+Begin with:
 
-First solve:
-
-- information hierarchy
-- grouping
-- reading order
-- navigation
-- primary action
+- Information hierarchy
+- Grouping
+- Reading order
+- Navigation
+- Primary action
 
 Then style.
-
----
 
 ## Avoid Visual Repetition
 
 Avoid making every section:
 
-- centered
-- equal height
-- equally spaced
-- equal width
-
-Allow rhythm.
+- Centered
+- Equal height
+- Equal width
+- Equally spaced
+- Card-based
 
 Different content deserves different composition.
 
----
-
 ## Prefer Deleting
 
-If uncertain,
+If uncertain, remove UI.
 
-remove UI.
-
-Human engineers simplify.
-
-AI generators decorate.
-
-Prefer deleting components over adding them.
-
----
+Human engineers simplify. AI-generated UI often decorates. Prefer deleting weak components over adding more visual treatment.
 
 ## Before Completion
 
 Ask:
 
+```text
 Can another engineer explain every layout decision?
+```
 
-If not,
-
-simplify.
+If not, simplify.
