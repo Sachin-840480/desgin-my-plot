@@ -1,3 +1,5 @@
 backup
 
 # Local AI/UI guidance notes
+.agents/
+skills-lock.json/
