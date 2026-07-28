@@ -1,0 +1,285 @@
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 44px;
+  align-items: center;
+  padding: 92px 0 48px;
+}
+
+.heroContent {
+  max-width: 660px;
+}
+
+.heroBadge {
+  display: inline-flex;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgba(243, 207, 166, 0.18);
+  color: #f7e7d3;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.heroTitle {
+  margin: 28px 0 0;
+  font-size: clamp(3.2rem, 5vw, 5.25rem);
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+  max-width: 9ch;
+  color: #ffffff;
+}
+
+.heroText {
+  margin: 28px 0 0;
+  max-width: 40rem;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1.08rem;
+  line-height: 1.85;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  margin-top: 34px;
+}
+
+.primaryButton,
+.secondaryButton {
+  border-radius: 999px;
+  padding: 14px 24px;
+  font-weight: 700;
+  font-size: 0.96rem;
+  transition: transform 180ms ease, background-color 180ms ease, color 180ms ease, box-shadow 180ms ease;
+}
+
+.primaryButton {
+  background: #f4b87c;
+  color: #0f0b08;
+  box-shadow: 0 18px 32px rgba(244, 184, 124, 0.22);
+  border: none;
+}
+
+.primaryButton:hover,
+.primaryButton:focus-visible {
+  transform: translateY(-1px);
+  background: #d08d52;
+}
+
+.secondaryButton {
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  color: rgba(255, 255, 255, 0.88);
+  background: transparent;
+}
+
+.secondaryButton:hover,
+.secondaryButton:focus-visible {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.featureRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 36px;
+}
+
+.featurePill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 174px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+  font-size: 0.94rem;
+  line-height: 1.4;
+}
+
+.featurePill strong {
+  font-weight: 700;
+  color: #f4b87c;
+}
+
+.heroVisual {
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.visualPanel {
+  position: relative;
+  width: min(100%, 440px);
+  padding: 30px;
+  border-radius: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(16, 13, 11, 0.82);
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.28);
+  overflow: hidden;
+}
+
+.mapHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.mapLabel {
+  display: inline-flex;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(244, 184, 124, 0.16);
+  color: #fbe9d4;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.mapTitle {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1.45rem;
+  line-height: 1.1;
+}
+
+.mapBadge {
+  white-space: nowrap;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(244, 184, 124, 0.22), rgba(255, 255, 255, 0.08));
+  color: #ffffff;
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+.mapGraph {
+  position: relative;
+  min-height: 240px;
+  border-radius: 28px;
+  overflow: hidden;
+  background: radial-gradient(circle at top left, rgba(228, 194, 148, 0.22), transparent 32%),
+    radial-gradient(circle at bottom right, rgba(34, 30, 26, 0.95), transparent 28%),
+    linear-gradient(180deg, rgba(30, 27, 25, 0.96), rgba(20, 17, 14, 0.98));
+}
+
+.mapGrid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.85;
+}
+
+.plotShape {
+  position: absolute;
+  inset: 28px 32px auto auto;
+  width: 220px;
+  height: 220px;
+  border-radius: 28px 16px 30px 18px;
+  background: linear-gradient(180deg, rgba(244, 184, 124, 0.42), rgba(255, 255, 255, 0.08));
+  box-shadow: 0 28px 64px rgba(0, 0, 0, 0.16);
+}
+
+.plotPin {
+  position: absolute;
+  top: 42px;
+  left: 36px;
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: #f4b87c;
+  box-shadow: 0 0 0 6px rgba(244, 184, 124, 0.16);
+}
+
+.mapStats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin: 24px 0 0;
+  padding: 18px;
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.mapStats dt {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.54);
+  font-size: 0.86rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.mapStats dd {
+  margin: 8px 0 0;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.glowSphere,
+.accentShape {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(36px);
+  opacity: 0.65;
+}
+
+.glowSphere {
+  width: 240px;
+  height: 240px;
+  right: -24px;
+  top: 30%;
+  background: radial-gradient(circle, rgba(244, 184, 124, 0.35), transparent 60%);
+}
+
+.accentShape {
+  width: 144px;
+  height: 144px;
+  left: -20px;
+  bottom: -16px;
+  background: radial-gradient(circle, rgba(224, 145, 73, 0.28), transparent 62%);
+}
+
+@media (max-width: 960px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding-top: 72px;
+  }
+
+  .heroVisual {
+    justify-items: center;
+  }
+}
+
+@media (max-width: 680px) {
+  .hero {
+    padding-top: 56px;
+  }
+
+  .heroTitle {
+    font-size: clamp(2.6rem, 9vw, 3.6rem);
+  }
+
+  .heroActions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .heroVisual {
+    width: 100%;
+  }
+
+  .mapStats {
+    grid-template-columns: 1fr;
+  }
+}

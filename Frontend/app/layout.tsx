@@ -4,7 +4,7 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: 'Design My Plot',
-  description: 'Sketch plot boundaries, arrange structures, and plan land layouts.',
+  description: 'Design My Plot helps you map property boundaries, arrange structures, and export site-ready land plans.',
 };
 
 export default function RootLayout({
