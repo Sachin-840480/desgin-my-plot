@@ -1,331 +1,290 @@
 
-# DesignMyPlot Frontend Agent Guidelines
+# Frontend Workflow
 
-## Important: Next.js Version
+Every frontend implementation MUST follow this order.
 
-This project may use Next.js APIs and conventions newer than the model's
-training data.
+Never skip steps.
 
-Before making assumptions about Next.js APIs, routing, configuration, or
-conventions, inspect the relevant documentation available in:
-
-`node_modules/next/dist/docs/`
-
-Do not use deprecated APIs when the installed version provides a newer
-recommended approach.
-
----
-
-## Project
-
-DesignMyPlot is a web application for planning and designing residential
-plots.
-
-The frontend should be treated as a production application, not a demo
-or generic SaaS template.
-
----
-
-## Architecture
-
-- Framework: Next.js with App Router.
-- Root application directory: `app/`.
-- No `src/` directory is used.
-- Routes belong in `app/`.
-- Reusable and feature-specific UI belongs in `components/`.
-- Shared utilities and clients belong in `lib/`.
-- Static assets belong in `public/`.
-
-Keep the frontend modular and easy to navigate.
-
-Example:
-
-Frontend/
-├── app/
-├── components/
-│   ├── landing/
-│   ├── dashboard/
-│   └── ui/
-├── lib/
-└── public/
-
-Do not place reusable application components inside `app/` unless there
-is a specific routing/layout reason for doing so.
+```
+User Request
+      │
+      ▼
+Read AGENTS.md
+      │
+      ▼
+Read frontend-design skill
+      │
+      ▼
+Determine the product experience
+      │
+      ▼
+Search shadcn MCP for suitable components
+      │
+      ▼
+Use shadcn/ui as the implementation foundation
+      │
+      ▼
+Use Tailwind utilities for layout and composition
+      │
+      ▼
+Use Inspforge ONLY to accelerate implementation
+      │
+      ▼
+Review generated code
+      │
+      ▼
+Remove unnecessary wrappers,
+duplicate styles,
+unused classes,
+dead code,
+and generic AI patterns
+      │
+      ▼
+Final Production UI
+```
 
 ---
 
-## Frontend Design
+# Responsibilities
 
-For ALL frontend design work, use the installed `frontend-design` skill.
+Each tool has a different responsibility.
 
-The `frontend-design` skill is the primary authority for:
+## frontend-design skill
 
-- visual direction
-- typography
-- hierarchy
-- composition
-- spacing
-- interaction
-- motion
-- responsive behavior
-- overall product identity
+Responsible for:
 
-Do not default to generic AI-generated SaaS layouts.
+- UX
+- Information hierarchy
+- Layout
+- Interaction
+- Responsive behavior
+- Visual rhythm
+- Product identity
 
-Do not automatically use patterns such as:
+This skill determines **what the interface should be**.
 
-`navbar → hero → three cards → CTA → footer`
-
-Design around the actual DesignMyPlot product and user experience.
-
-The frontend-design skill determines HOW the experience should look and
-feel. shadcn/ui provides the implementation primitives used to build that
-experience.
+It does NOT determine component implementation.
 
 ---
 
-## UI Implementation — shadcn/ui First
+## shadcn/ui
 
-shadcn/ui is the DEFAULT component system for this frontend.
+Responsible for implementing standard UI primitives.
 
-For every frontend implementation task:
+Always prefer existing shadcn components.
 
-1. Use the `frontend-design` skill to establish the design direction.
-2. Use the configured shadcn MCP to search for suitable shadcn components
-   before implementing UI primitives manually.
-3. Prefer existing shadcn/ui components whenever an appropriate component
-   exists.
-4. Use shadcn components as the foundation of the interface.
-5. Compose and customize shadcn components using Tailwind utility classes.
-6. Do NOT manually recreate components that already exist in shadcn/ui.
-
-Prefer shadcn components for standard UI including:
+Examples:
 
 - Button
 - Card
 - Dialog
-- Alert Dialog
-- Drawer
 - Sheet
+- Dropdown
+- Table
 - Input
-- Textarea
+- Form
 - Select
-- Checkbox
-- Radio Group
-- Switch
-- Slider
 - Tabs
 - Accordion
-- Dropdown Menu
 - Navigation Menu
-- Menubar
 - Tooltip
-- Popover
-- Hover Card
-- Command
-- Table
-- Badge
-- Separator
-- Form
-- Sidebar
-- Breadcrumb
-- Pagination
+- Alert
 - Skeleton
-- Progress
-- Sonner
-- Carousel
 
-Always check the shadcn MCP for an appropriate existing component before
-building a standard UI primitive yourself.
+Do not recreate components that already exist.
 
 ---
 
-## No Custom CSS
+## Tailwind
 
-Do NOT create custom CSS for normal application UI.
+Responsible only for:
 
-Do NOT create:
+- spacing
+- layout
+- flex/grid
+- sizing
+- responsive behavior
+- small visual customization
 
-- CSS Modules
-- `*.module.css`
-- page-specific CSS files
-- component-specific CSS files
-- large handwritten stylesheets
-- custom CSS classes for standard UI
-- duplicated styles already achievable through Tailwind or shadcn
-
-Files such as these should NOT be created:
-
-`Hero.module.css`
-`Landing.module.css`
-`Dashboard.module.css`
-`Navbar.module.css`
-`Features.module.css`
-
-Do not move page-specific CSS into `globals.css` as a workaround.
-
-### Styling priority
-
-Always follow this order:
-
-`frontend-design skill`
-↓
-`shadcn MCP`
-↓
-`shadcn/ui components`
-↓
-`Tailwind utility classes`
-
-Do not introduce handwritten CSS when the same result can reasonably be
-implemented using shadcn and Tailwind.
-
-### globals.css
-
-`globals.css` should be limited to what is genuinely required globally,
-including:
-
-- Tailwind setup/imports
-- shadcn theme variables
-- global design tokens
-- font configuration when required
-- minimal application-wide base styles
-
-Do NOT place landing-page, dashboard, component, or feature-specific
-styles in `globals.css`.
+Do not use Tailwind to recreate components that already exist in shadcn.
 
 ---
 
-## Product-Specific UI
+## Inspforge
 
-Not every DesignMyPlot experience will have an equivalent shadcn component.
+Inspforge is an implementation accelerator.
 
-Product-specific experiences such as:
+It may generate:
 
-- plot visualization
-- plot boundaries
-- dimension overlays
-- site plans
-- drawing surfaces
-- road orientation
-- setback visualization
-- interactive planning canvases
-- architectural/site-specific visualization
+- React components
+- Tailwind composition
+- layouts
+- page scaffolding
 
-may require custom React components.
+Generated code is NEVER considered production-ready.
 
-Even for these components:
-
-1. Use shadcn for surrounding controls and standard UI.
-2. Use Tailwind for normal layout and styling.
-3. Avoid standalone CSS files.
-4. Introduce custom styling/rendering techniques only when technically
-   required by the visualization itself.
-
-Do not force a shadcn Card or other generic primitive onto a product-specific
-experience when a custom composition is more appropriate.
+Every generated component MUST be reviewed and refined before completion.
 
 ---
 
-## Component Organization
+# AI UI Quality Rules
 
-Keep components modular but avoid unnecessary fragmentation.
+Avoid interfaces that immediately look AI-generated.
 
-Example:
+The following patterns should generally NOT appear unless there is a genuine product requirement.
 
-components/
-├── landing/
-│   ├── Hero.tsx
-│   ├── PlotPreview.tsx
-│   └── ...
-│
-├── dashboard/
-│   └── ...
-│
-└── ui/
-    ├── button.tsx
-    ├── dialog.tsx
-    ├── input.tsx
-    └── ... shadcn components
+Avoid:
 
-`components/ui/` is primarily for shadcn/ui primitives.
+- giant hero sections
+- excessive empty whitespace
+- oversized rounded corners
+- glassmorphism
+- glowing cards
+- floating cards
+- floating gradients
+- random blobs
+- excessive shadows
+- gradient text
+- neon accents
+- oversized icons
+- decorative illustrations
+- fake dashboard statistics
+- unnecessary animations
+- excessive badges
+- duplicate CTAs
+- centered layouts that waste space
 
-`components/landing/`, `components/dashboard/`, and other feature
-directories compose those primitives into actual product experiences.
-
-A component should have a clear responsibility.
-
-Do not create dozens of tiny components simply for the sake of
-componentization.
+The interface should resemble something designed by an experienced frontend engineer, not an AI image generator.
 
 ---
 
-## Existing CSS and Legacy UI
+# Color Guidelines
 
-When rebuilding an existing page:
+Avoid the default colors commonly overused in AI-generated interfaces.
 
-- Do not reuse obsolete CSS from the previous implementation.
-- Remove unused CSS Modules and page-specific styles.
-- Remove dead components after they have been replaced.
-- Do not preserve an old visual structure merely because code already exists.
-- Do not migrate old CSS into `globals.css`.
-- Rebuild the UI using the frontend-design skill + shadcn + Tailwind approach.
+Avoid using as the primary identity:
 
-If an existing component can be replaced by an appropriate shadcn primitive,
-prefer the shadcn implementation.
+- Indigo-600
+- Violet-600
+- Purple-600
+- Blue → Purple gradients
+- Pink gradients
+- Cyan gradients
 
----
+Avoid gradient buttons unless the product explicitly requires them.
 
-## General Engineering Rules
+Prefer restrained, professional palettes.
 
-- Preserve existing functionality unless explicitly asked to change it.
-- Prefer readable code over clever abstractions.
-- Avoid unnecessary dependencies.
-- Avoid duplicated components and styles.
-- Remove dead code after replacing an implementation.
-- Maintain responsive behavior.
-- Maintain accessibility.
-- Do not invent product functionality unless explicitly requested.
-- Use semantic HTML.
-- Use TypeScript correctly.
-- Prefer Server Components unless client-side behavior requires `"use client"`.
-- Keep client components as small as reasonably possible.
+Good examples include:
+
+- Slate
+- Zinc
+- Neutral
+- Stone
+
+Introduce brand colors intentionally rather than relying on Tailwind defaults.
+
+Color should support hierarchy—not become the hierarchy.
 
 ---
 
-## Required Frontend Workflow
+# Layout Philosophy
 
-For frontend tasks, follow this workflow:
+Always ask:
 
-1. Read this `AGENTS.md`.
-2. Read the relevant installed `frontend-design` skill.
-3. Understand the requested product experience.
-4. Establish the visual/design direction.
-5. Query the shadcn MCP for relevant components.
-6. Use shadcn components wherever suitable.
-7. Compose them using Tailwind utilities.
-8. Build custom components only for genuinely product-specific UI.
-9. Do not create custom CSS files.
-10. Remove obsolete UI/CSS left by the implementation being replaced.
-11. Verify responsiveness, accessibility, and functionality.
+"What information is most important for the user right now?"
 
-The intended relationship is:
+Never ask:
 
-Frontend Design Skill
-        ↓
-Design / UX decisions
-        ↓
-shadcn MCP
-        ↓
-shadcn/ui components
-        ↓
-Tailwind composition
-        ↓
-DesignMyPlot frontend
+"How can I make this look modern?"
 
-The frontend-design skill decides the experience.
+Interfaces should prioritize:
 
-shadcn/ui provides the standard implementation primitives.
+- clarity
+- usability
+- hierarchy
+- efficiency
 
-Tailwind handles composition and styling.
+before aesthetics.
 
-Custom CSS is not part of the normal frontend implementation workflow.
+Good UI solves problems.
+
+It does not decorate them.
+
+---
+
+# Component Quality Checklist
+
+Before completing any frontend task verify:
+
+✓ no unnecessary wrappers
+
+✓ no duplicate spacing
+
+✓ no duplicate containers
+
+✓ no dead Tailwind classes
+
+✓ semantic HTML
+
+✓ responsive layout
+
+✓ keyboard accessibility
+
+✓ mobile friendly
+
+✓ shadcn components used where appropriate
+
+✓ no handwritten CSS
+
+✓ no duplicated code
+
+✓ no fake placeholder content
+
+✓ spacing follows an 8px rhythm
+
+✓ typography has clear hierarchy
+
+✓ actions are visually obvious
+
+✓ loading and empty states exist when appropriate
+
+---
+
+# Generated Code Review
+
+If code is generated by Inspforge:
+
+Review it before accepting.
+
+Specifically remove:
+
+- duplicated wrappers
+- nested divs without purpose
+- unnecessary fragments
+- repeated Tailwind classes
+- inline styles
+- dead components
+- unused imports
+- redundant state
+- unnecessary effects
+
+Generated code should be refactored until it resembles code written by an experienced frontend engineer.
+
+---
+
+# Final Principle
+
+The goal is NOT to build an impressive interface.
+
+The goal is to build an interface that feels intentional, maintainable, fast, and production-ready.
+
+Every UI decision should have a reason.
+
+Every component should have a responsibility.
+
+Every color should communicate hierarchy.
+
+Every interaction should improve usability.
+
+If a design choice exists only because it "looks cool", reconsider it.
