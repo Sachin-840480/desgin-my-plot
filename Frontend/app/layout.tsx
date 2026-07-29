@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { ClerkProvider } from '@clerk/nextjs'
 import { Inter, JetBrains_Mono } from 'next/font/google'
 import { cn } from '@/lib/utils'
+import { TooltipProvider } from '@/components/ui/tooltip'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' })
@@ -21,7 +22,9 @@ export default function RootLayout({
     <html lang="en" className={cn(inter.variable, jetbrainsMono.variable)}>
       <body className="font-sans antialiased">
         <ClerkProvider signInUrl="/auth/sign-in" signUpUrl="/auth/sign-up">
-          {children}
+          <TooltipProvider>
+            {children}
+          </TooltipProvider>
         </ClerkProvider>
       </body>
     </html>
