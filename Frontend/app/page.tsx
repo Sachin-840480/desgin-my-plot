@@ -1,3 +1,7 @@
 export default function HomePage() {
-  return <div>This is landing page</div>;
+  return (
+    <div className="flex min-h-screen flex-col">
+     This is Landing Page
+    </div>
+  )
 }

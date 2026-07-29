@@ -1,3 +1,7 @@
 export default function DashboardPage() {
-  return <div>This is dashboard</div>;
+  return (
+    <div className="flex min-h-screen bg-background">
+     This is Dashboard Page
+    </div>
+  )
 }
