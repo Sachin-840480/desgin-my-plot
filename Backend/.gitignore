@@ -37,3 +37,8 @@ coverage/
 
 # .venv environment
 .venv
+
+# dont track these files
+example/chat.txt
+test/*.py
+export/
