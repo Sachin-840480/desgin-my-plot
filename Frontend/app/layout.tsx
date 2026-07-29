@@ -11,6 +11,9 @@ const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mon
 export const metadata: Metadata = {
   title: 'Design My Plot',
   description: 'Sketch plot boundaries, arrange structures, and plan land layouts.',
+  icons: {
+    icon: '/favicon.png',
+  },
 }
 
 export default function RootLayout({
@@ -21,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={cn(inter.variable, jetbrainsMono.variable)}>
       <body className="font-sans antialiased">
-        <ClerkProvider signInUrl="/auth/sign-in" signUpUrl="/auth/sign-up">
+        <ClerkProvider>
           <TooltipProvider>
             {children}
           </TooltipProvider>

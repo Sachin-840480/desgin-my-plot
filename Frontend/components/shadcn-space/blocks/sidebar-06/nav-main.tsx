@@ -1,6 +1,8 @@
 "use client";
 
 import * as React from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ChevronRight, LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
@@ -29,10 +31,7 @@ export type NavItem = {
 };
 
 export function NavMain({ items }: { items: NavItem[] }) {
-  const [activeParent, setActiveParent] = React.useState<string | null>(
-    items.find((i) => !i.isSection)?.title || null
-  );
-  const [activeChild, setActiveChild] = React.useState<string | null>(null);
+  const pathname = usePathname();
 
   return (
     <>
@@ -40,10 +39,7 @@ export function NavMain({ items }: { items: NavItem[] }) {
         <NavMainItem
           key={item.title || item.label || index}
           item={item}
-          activeParent={activeParent}
-          setActiveParent={setActiveParent}
-          activeChild={activeChild}
-          setActiveChild={setActiveChild}
+          pathname={pathname}
         />
       ))}
     </>
@@ -52,22 +48,20 @@ export function NavMain({ items }: { items: NavItem[] }) {
 
 function NavMainItem({
   item,
-  activeParent,
-  setActiveParent,
-  activeChild,
-  setActiveChild,
+  pathname,
 }: {
   item: NavItem;
-  activeParent: string | null;
-  activeChild: string | null;
-  setActiveParent: (val: string) => void;
-  setActiveChild: (val: string | null) => void;
+  pathname: string;
 }) {
   const hasChildren = !!item.children?.length;
-  const isParentActive = activeParent === item.title;
+  const isParentActive = item.href
+    ? (item.href === "/dashboard"
+        ? pathname === "/dashboard" || pathname === "/dashboard/"
+        : pathname === item.href || pathname.startsWith(item.href + "/"))
+    : false;
   const [isOpen, setIsOpen] = React.useState(isParentActive);
 
-  // Sync open state when activeParent changes
+  // Sync open state when active state changes
   React.useEffect(() => {
     if (isParentActive) {
       setIsOpen(true);
@@ -99,7 +93,6 @@ function NavMainItem({
                     id={`nav-main-trigger-${item.title.toLowerCase().replace(/\s+/g, '-')}`}
                     tooltip={item.title}
                     isActive={isParentActive}
-                    onClick={() => setActiveParent(item.title!)}
                     className={cn(
                       "rounded-md text-sm font-medium px-3 py-2 h-9 transition-colors cursor-pointer",
                       isParentActive ? "bg-primary! text-primary-foreground!" : ""
@@ -122,11 +115,7 @@ function NavMainItem({
                     <NavMainSubItem
                       key={child.title || index}
                       item={child}
-                      activeParent={activeParent}
-                      setActiveParent={setActiveParent}
-                      activeChild={activeChild}
-                      setActiveChild={setActiveChild}
-                      parentTitle={item.title}
+                      pathname={pathname}
                     />
                   ))}
                 </SidebarMenuSub>
@@ -148,15 +137,11 @@ function NavMainItem({
               id={`nav-main-button-${item.title.toLowerCase().replace(/\s+/g, '-')}`}
               tooltip={item.title}
               isActive={isParentActive}
-              onClick={() => {
-                setActiveParent(item.title!);
-                setActiveChild(null);
-              }}
               className={cn(
                 "rounded-md text-sm font-medium px-3 py-2 h-9 transition-colors cursor-pointer",
                 isParentActive ? "bg-primary! text-primary-foreground!" : ""
               )}
-              render={<a href={item.href} />}
+              render={item.href && item.href !== "#" ? <Link href={item.href} /> : undefined}
             >
               {item.icon && <item.icon />}
               {item.title}
@@ -172,21 +157,14 @@ function NavMainItem({
 
 function NavMainSubItem({
   item,
-  activeParent,
-  setActiveParent,
-  activeChild,
-  setActiveChild,
-  parentTitle,
+  pathname,
 }: {
   item: NavItem;
-  activeParent: string | null;
-  activeChild: string | null;
-  setActiveParent: (val: string) => void;
-  setActiveChild: (val: string | null) => void;
-  parentTitle?: string;
+  pathname: string;
 }) {
   const hasChildren = !!item.children?.length;
   const [isOpen, setIsOpen] = React.useState(false);
+  const isChildActive = item.href ? pathname === item.href : false;
 
   if (hasChildren && item.title) {
     return (
@@ -216,11 +194,7 @@ function NavMainSubItem({
                 <NavMainSubItem
                   key={child.title || index}
                   item={child}
-                  activeParent={activeParent}
-                  setActiveParent={setActiveParent}
-                  activeChild={activeChild}
-                  setActiveChild={setActiveChild}
-                  parentTitle={parentTitle}
+                  pathname={pathname}
                 />
               ))}
             </SidebarMenuSub>
@@ -237,14 +211,10 @@ function NavMainSubItem({
           id={`nav-sub-button-${item.title.toLowerCase().replace(/\s+/g, '-')}`}
           className={cn(
             "w-full rounded-md transition-colors",
-            activeChild === item.title ? "bg-muted! text-foreground!" : ""
+            isChildActive ? "bg-muted! text-foreground!" : ""
           )}
-          isActive={activeChild === item.title}
-          onClick={() => {
-            setActiveParent(parentTitle || "");
-            setActiveChild(item.title!);
-          }}
-          render={<a href={item.href}>{item.title}</a>}
+          isActive={isChildActive}
+          render={item.href && item.href !== "#" ? <Link href={item.href}>{item.title}</Link> : <span>{item.title}</span>}
         />
       </SidebarMenuSubItem>
     );
